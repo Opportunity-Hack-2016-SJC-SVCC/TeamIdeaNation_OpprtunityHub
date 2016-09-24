@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var mongoStore = require("connect-mongo")(expressSession);
 var mongoSessionConnectURL = "mongodb://localhost:27017/amazon_fresh";   //Change this if needed ................................//
 var passport = require('passport');
+var users=require('./routes/users');
 //require('./routes/passport')(passport);
 // var cron = require('cron');
 // var discountCronJob = cron.job("*/10 * * * * *",cronRoute.processDiscount);
@@ -42,6 +43,8 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
 	res.render('index', {});
 });
+
+app.post('/doUserSignup',users.doSignUp);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
