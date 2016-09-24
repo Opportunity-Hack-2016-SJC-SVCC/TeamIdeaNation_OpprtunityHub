@@ -5,9 +5,15 @@
     <title><%= title %></title>
   </head>
   <body>
-  	<form action="/signup">
+  	<form action="/doUserSignup" method="post">
   		<p> name</p>
-  		<input type="text" id="name" name=""/>
+  		<input type="text" id="name" name="name"/>
+      <p>email</p>
+      <input type="text" id="email" name="email"/>
+      <p> password</p>
+      <input type="text" id="password" name="password"/>
+      <p> <button name ="submit" type = "submit">Submit</button></p>
+      
   	</form>
   </body>
   </html>
