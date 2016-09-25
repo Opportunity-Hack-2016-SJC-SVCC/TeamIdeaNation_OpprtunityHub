@@ -46,8 +46,11 @@ exports.displayAllProjectsNPO = function(req,res)
   {
     "NPO_ID" : npoId//new require('mongodb').ObjectID(req.session.userId)
   }
+exports.getProjectDetails = function(req,res)
+{
 
-  var callbackFunction = function (err, result) {
+  var projectId = req.body["projectId"];
+      var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
@@ -56,26 +59,25 @@ exports.displayAllProjectsNPO = function(req,res)
         }
         else {
       console.log(result);
-
             var jsonResponse={"projects":result,"statusCode":200};
             res.send(jsonResponse);
+            var jsonResponse={"results":result,statuscode:200};
             //res.customerDetails=result;
             //callback(null, jsonResponse);
-
+            res.send(jsonResponse);
         }
     }
-    mongo.find("PROJECT", queryJSON, callbackFunction);
+    mongo.findOneUsingId("PROJECT", projectId, callbackFunction);
 }
 
-exports.displayProject = function(req,res)
+
+exports.displayAllProjects = function(req,res)
 {
-  var npoId = 12;
-  var projectId = req.body['projectId'];
+  var npoId =12;
 
   var queryJSON =
   {
-    "NPO_ID" : npoId,
-    "_id" : ObjectId(projectId)
+    "NPO_ID" : npoId
   }
 
   var callbackFunction = function (err, result) {
@@ -92,8 +94,17 @@ exports.displayProject = function(req,res)
 
         }
     }
-    mongo.findOne("PROJECT", queryJSON, callbackFunction);
+    mongo.find("PROJECT", queryJSON, callbackFunction);
 }
+
+exports.getDisplayPage = function(req,res)
+{
+  //var projectId = req.body['projectId'];
+  var projectId = req.param("projectId");
+  console.log(projectId);
+  res.render('./ProjectPages/project.ejs',{"projectId":projectId});
+}
+
 
 exports.editProject = function(req,res)
 {

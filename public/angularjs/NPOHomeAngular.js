@@ -29,7 +29,6 @@ app.controller('NPOHomeAngular',function($scope,$http){
 
 	$scope.createNewProject = function()
 	{
-		console.log("try this 1");
 		window.location.assign("/projects/getProjectAddPage");
 	}
 
