@@ -134,16 +134,16 @@
                 <div class="panel-body">
 
                   <!-- List of the Projects -->
-                  <div class="row">
+                  <div ng-repeat="skill in skillSet">
+                  <div class="row" ng-repeat="application in skill.APPLICATIONS">
                     <div class="col-md-12">
                       <div class="media">
                         <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/48/48/" class="media-object" /></a>
                         <div class="media-body">
                           <h4 class="media-heading">
-                            <a href="">Firstname Lastname</a>
+                            <a href="">{{application.NAME}}</a>
                           </h4>
-                          <h5>Applied for <strong>Front-End Dev.</strong></h5>
-                          Description Description Description Description Description Description Description Description Description Description Description Description Description
+                          <h5>Applied for <strong>{{skill.SKILL}}</strong></h5>
                         <div class="row cus-row-margin">
                           <div class="col-md-2"><button class="btn btn-success btn-outline">Approve</button></div>
                         </div>
@@ -152,44 +152,10 @@
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="media">
-                        <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/48/48/" class="media-object" /></a>
-                        <div class="media-body">
-                          <h4 class="media-heading">
-                            <a href="">Firstname Lastname</a>
-                          </h4>
-                          <h5>Applied for <strong>Front-End Dev.</strong></h5>
-                          Description Description Description Description Description Description Description Description Description Description Description Description Description
-                        <div class="row cus-row-margin">
-                          <div class="col-md-2"><button class="btn btn-success btn-outline">Approve</button></div>
-                        </div>
-                        </div>
-                        <div class="row cus-row-margin"><hr></div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="media">
-                        <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/48/48/" class="media-object" /></a>
-                        <div class="media-body">
-                          <h4 class="media-heading">
-                            <a href="">Firstname Lastname</a>
-                          </h4>
-                          <h5>Applied for <strong>Front-End Dev.</strong></h5>
-                          Description Description Description Description Description Description Description Description Description Description Description Description Description
-                        <div class="row cus-row-margin">
-                          <div class="col-md-2"><button class="btn btn-success btn-outline">Approve</button></div>
-                        </div>
-                        </div>
-                        <div class="row cus-row-margin"><hr></div>
-                      </div>
-                    </div>
-                  </div>
+
 
 
                   <!-- ./List of the Projects End -->
