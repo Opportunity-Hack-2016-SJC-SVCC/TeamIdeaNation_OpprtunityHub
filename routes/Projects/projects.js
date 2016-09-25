@@ -45,6 +45,24 @@ exports.displayAllProjectsNPO = function(req,res)
   {
     "NPO_ID" : npoId//new require('mongodb').ObjectID(req.session.userId)
   }
+
+  var callbackFunction = function(err,result)
+  {
+    if(err)
+    {
+      console.log(err);
+      var jsonResponse={"statusCode":401};
+      res.send(jsonResponse);
+    }
+    else {
+      console.log(result);
+      var jsonResponse = {"projects":result,"statusCode":200};
+      res.send(jsonResponse);
+    }
+  }
+  mongo.find("PROJECT",queryJSON,callbackFunction);
+}
+
 exports.getProjectDetails = function(req,res)
 {
 
@@ -73,7 +91,7 @@ exports.getProjectDetails = function(req,res)
 
 exports.displayAllProjects = function(req,res)
 {
-  var npoId =12;
+  var npoId =req.session.userId;
 
   var queryJSON =
   {
@@ -84,11 +102,12 @@ exports.displayAllProjects = function(req,res)
 
         if (err) {
             console.log(err);
+              var jsonResponse={"statusCode":401};
         }
         else {
       console.log(result);
 
-            var jsonResponse={"projects":result};
+            var jsonResponse={"projects":result,"statusCode":200};
             //res.customerDetails=result;
             //callback(null, jsonResponse);
 
