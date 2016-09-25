@@ -94,15 +94,15 @@ function doSignUp(req, res) {
         }
         else{
           var queryJSONFind = {"EMAIL": email};
-          var callbackFunction2 = function (err, result2) {
+          var callbackFunction5 = function (err, result5) {
             if (err) {
               console.log(err);
             }
             else {
-              console.log(result2);
-              if(result2!=null){
+              console.log(result5);
+              if(result5!=null){
                   console.log("Data fetched successfully from USERS");
-                  console.log(result2);
+                  console.log(result5);
                   var callbackFunction4 = function(err4,result4){
                   console.log(result4);
                   if(err){
@@ -123,11 +123,11 @@ function doSignUp(req, res) {
 
               }
 
-              var user_id = new require('mongodb').ObjectID(result2._id);
+              var user_id = new require('mongodb').ObjectID(result5._id);
               //console.log("USER_ID-->"+user_id);
               var participant_id_query =
               {
-                "USER_ID" : result2._id,
+                "USER_ID" : result5._id,
                 "NAME":name,
                 "EMAIL":email,
                 "PASSWORD":password,
@@ -140,7 +140,7 @@ function doSignUp(req, res) {
             }
           }
         }
-        mongo.findOne("USERS", queryJSONFind, callbackFunction2);
+        mongo.findOne("USERS", queryJSONFind, callbackFunction5);
         }
     }
   }

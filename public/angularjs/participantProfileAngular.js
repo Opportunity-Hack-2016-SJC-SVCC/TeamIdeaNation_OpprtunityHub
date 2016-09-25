@@ -30,19 +30,19 @@ app.controller('participantEditController',function($scope,$http){
     })
   }
 
-    $scope.doEditNPO = function(){
+    $scope.doEditParticipant = function(){
       $http({
 
               method:"POST",
-              url:'/NPO/edit',
+              url:'/participant/edit',
               data : {
                   "name":$scope.name,
                   "email":$scope.email,
                   "password":$scope.password,
-                  "aboutUs":$scope.aboutUs,
+                  "description":$scope.description,
                   "address":$scope.address,
                   "website":$scope.website,
-                  "video":$scope.video
+                  "skillSet":$scope.skillSet
               }
           }).then(function(res){
           	console.log(JSON.stringify(res));
@@ -52,10 +52,10 @@ app.controller('participantEditController',function($scope,$http){
                 $scope.name=res.data.session.name;
                 $scope.email=res.data.session.email;
                 $scope.password=res.data.session.password;
-                $scope.aboutUs=res.data.session.aboutUs;
+                $scope.description=res.data.session.description;
                 $scope.address=res.data.session.address;
                 $scope.website=res.data.session.website;
-                $scope.video=res.data.session.video;
+                $scope.skillSet=res.data.session.skillSet;
           	}
             else {
               $scope.alert = "System error occured. Please try again after some time";

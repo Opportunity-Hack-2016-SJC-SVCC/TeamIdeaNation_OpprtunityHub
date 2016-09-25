@@ -60,7 +60,7 @@ app.get('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
 
-app.post('/participant/edit:id',participant.editProfile);
+app.post('/participant/edit',participant.editProfile);
 app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
 app.get('/participant/display',participant.displayProfile);
