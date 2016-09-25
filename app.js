@@ -91,6 +91,13 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/projects/:projectId',projects.getDisplayPage);
 
+app.get('/logout',function(req,res){
+  console.log("in logout");
+  req.session.destroy();
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  res.redirect('/');
+});
+
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);
