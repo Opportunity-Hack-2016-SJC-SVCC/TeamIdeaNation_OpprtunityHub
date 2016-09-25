@@ -29,6 +29,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="/angularjs/participantHomeAngular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,7 +39,45 @@
 
 </head>
 
-<body ng-controller="participantHomeAngular"  ng-cloak>
+<script>
+var params =
+{
+   "documents": [
+       {
+           "language": "en",
+           "id": "1",
+           "text": "The JSON object contains methods for parsing JavaScript Object Notation (JSON) and converting values to JSON. It can't be called or constructed, and aside from its two method properties it has no interesting functionality of its own."
+       },
+
+       {
+           "language": "en",
+           "id": "100",
+           "text": "Final document"
+       }
+   ]
+};
+
+$.ajax({
+          url: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases",
+          beforeSend: function(xhrObj){
+              // Request headers
+              xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7825b1724a2147dea1eab2375148106f");
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                  xhrObj.setRequestHeader("Accept","application/json");
+          },
+          type: "POST",
+          // Request body
+          data: JSON.stringify(params),
+      })
+      .done(function(data) {
+          alert(JSON.stringify(data));
+      })
+      .fail(function(err) {
+          alert(JSON.stringify(err));
+      });
+</script>
+
+<body ng-controller="participantHomeAngular"  data-ng-init="init()" ng-cloak>
 
     <div id="wrapper">
     <!-- ------------------- Nav Partial ------------------------->
@@ -47,7 +86,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header cus-page-header">--Project Name--</h1>
+                    <h1 class="page-header cus-page-header"><%=name%></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
