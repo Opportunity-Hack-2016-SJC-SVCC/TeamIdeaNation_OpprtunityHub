@@ -1,4 +1,4 @@
-var mongo = require("./mongo");
+var mongo = require("../mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
 
@@ -21,13 +21,13 @@ exports.NPOProfileEdit = function(req,res)
   		"WEBSITE":website,
   		"DESCRIPTION":description,
   		"IMAGE":image,
-  		"WEBSITE":website
+  		"WEBSITE":website,
   		"VIDEO":video
 	}
 
-	var queryJSON = 
+	var queryJSON =
 	{
-		"USER_ID" : userId 
+		"USER_ID" : userId
 	}
 
 	var callbackFunction = function (err, result) {
@@ -37,7 +37,7 @@ exports.NPOProfileEdit = function(req,res)
         }
         else {
 			console.log(result);
-            
+
             //var jsonResponse={"customerDetails":result};
             //res.customerDetails=result;
             //callback(null, jsonResponse);
@@ -61,7 +61,7 @@ exports.NPOProfileDisplay = function(req,res)
         }
         else {
 			console.log(result);
-            
+
             var jsonResponse={"NPODetails":result};
             //res.customerDetails=result;
             callback(null, jsonResponse);
@@ -69,5 +69,5 @@ exports.NPOProfileDisplay = function(req,res)
         }
     }
 
-    mongo.findOne = function("NPO_DETAILS",queryJSON,callbackFunction);
+    mongo.findOne("NPO_DETAILS",queryJSON,callbackFunction);
 }
