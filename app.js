@@ -75,8 +75,7 @@ app.get('/participant/display',participant.displayProfile);
 
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
-app.get('/NPO/getHomepage',NPOProfile.getHomepage);
-app.get('/participant/getHomepage',participant.getHomepage);
+app.get('/volunteerHome',participant.getHomepage);
 app.get('/NPOgetHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
@@ -86,12 +85,16 @@ app.get('/nextStep',NPOProfile.nextStep);
 
 app.get('/nextStepParticipant',participant.nextStepParticipant);
 
-app.get('/nextStep',NPOProfile.nextStep);
-app.get('/nextStep',NPOProfile.nextStep);
-app.get('/nextStep',NPOProfile.nextStep);
-app.get('/nextStep',NPOProfile.nextStep);
 app.post('/projects/applyForSkill',projects.applyForJob);
+
 app.get('/projects/:projectId',projects.getDisplayPage);
+
+app.get('/logout',function(req,res){
+  console.log("in logout");
+  req.session.destroy();
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  res.redirect('/');
+});
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

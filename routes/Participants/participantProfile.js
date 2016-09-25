@@ -121,5 +121,6 @@
 
 exports.getHomepage = function(req,res)
 {
+  console.log(req.session.name);
   res.render('./participantPages/Participanthome.ejs',{name:req.session.name});
 }
