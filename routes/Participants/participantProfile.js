@@ -62,3 +62,27 @@ exports.editProfile = function(req,res)
     }
     mongo.updateOne("PARTICIPANT", queryJSON, updateJSON, callbackFunction);
 }
+
+exports.getLoggedParticipant = function(req,res)
+{
+  var userId = 122; // Session varibale here
+
+  var queryJSON =
+  {
+    "USER_ID":userId
+  }
+
+  var callbackFunction =  function(err,result)
+  {
+    if(err)
+    {
+      console.log(err);
+    }
+    else {
+      console.log(result);
+      // JSON response here
+    }
+  }
+
+  mongo.find("PARTICIPANT",queryJSON,callbackFunction);
+}

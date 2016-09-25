@@ -71,3 +71,27 @@ exports.NPOProfileDisplay = function(req,res)
 
     mongo.findOne("NPO_DETAILS",queryJSON,callbackFunction);
 }
+
+exports.getLoggedNPO = function(req,res)
+{
+	var userId = 122; // Session varibale here
+
+	var queryJSON =
+	{
+		"USER_ID":userId
+	}
+
+	var callbackFunction =  function(err,result)
+	{
+		if(err)
+		{
+			console.log(err);
+		}
+		else {
+			console.log(result);
+			// JSON response here
+		}
+	}
+
+	mongo.find("NPO_DETAILS",queryJSON,callbackFunction);
+}
