@@ -75,7 +75,6 @@ app.get('/participant/display',participant.displayProfile);
 
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
-app.get('/NPO/getHomepage',NPOProfile.getHomepage);
 app.get('/participant/getHomepage',participant.getHomepage);
 app.get('/NPOgetHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
