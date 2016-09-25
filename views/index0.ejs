@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="indexAngular">
+<html lang="en" ng-app="projectAngular">
 
 <head>
 
@@ -27,7 +27,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="angularjs/indexAngular.js"></script>
+    <script src="angularjs/projectAngular.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,31 +39,85 @@
 
 <body>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="cus-logo-big">
-                <img alt="OpportunityHub" src="images/support_images/logo-big.png">
-                <div class="row cus-row-margin">
-                  <div class="col-md-3"></div>
-                  <div class="col-md-6">
-                    <span>...where coders meet the community...</span>
-                  </div>
-                  <div class="col-md-3"></div>
+    <div id="wrapper">
+    <!-- ------------------- Nav Partial ------------------------->
+    <% include ./partials/nav-no-login %>
+
+            <div class="row cus-row-margin">
+              <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <div class="input-group custom-search-form">
+                              <input type="text" class="form-control" placeholder="Search Projects...">
+                              <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </span>
+                          </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Projects
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" ng-controller="ProjectController">
+
+                          <!-- List of the Projects -->
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="media" ng-repeat="project in projects">
+                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
+                                <div class="media-body" >
+                                  <h4 class="media-heading">
+                                    <a class="cus-link" href="#">{{project.PROJECT_TITLE}}</a>
+                                  </h4> {{project.PROJECT_DESC}}
+                                  <div class="media">
+                                    <div class="media-body">
+                                      <h5 class="media-heading">
+                                        <div>
+                                            <div class="row">
+                                              <div class="col-md-12" >
+
+                                                 <span class="label label-default">Angular JS</span>
+                                                <span class="label label-default">Node JS</span>
+                                                <span class="label label-default">Web Development</span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      </h5>
+                                      <div> </div>
+                                      <div class="row cus-row-margin"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row cus-row-margin"><hr></div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <!-- ./List of the Projects End -->
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
                 </div>
-                <div class="row cus-row-margin"></div>
-                <div class="row cus-row-margin">
-                  <div class="col-md-12">
-                      <button type="button" class="btn btn-outline btn-primary" data-toggle="modal" href="#modal-container-990751" id="modal-990751">Login</button>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" href="#modal-container-990750" id="modal-990750">Sign Up</button>
-                  </div>
-                </div>
-                <div class="row cus-row-margin"></div>
-                <div class="row cus-row-margin"><a class="cus-link" href="/index">Check out projects.</a></div>
-              </div>
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-2"></div>
             </div>
-          </div>
+            <!-- /.row -->
 
 
+    </div>
+    <!-- /#wrapper -->
 
     <!-- Modals -->
     <!-- Login Modal -->
@@ -141,11 +195,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
 
 
     <!-- jQuery -->
