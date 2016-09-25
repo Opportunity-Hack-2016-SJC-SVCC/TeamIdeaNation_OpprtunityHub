@@ -214,60 +214,6 @@ $.ajax({
                                 <div class="row cus-row-margin"><hr></div>
                               </div>
 
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h4 class="media-heading">
-                                    <a href="">Project Name 2</a>
-                                  </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
-                                  <div class="media">
-                                    <div class="media-body">
-                                      <h5 class="media-heading">
-                                        <div>
-                                          <p>
-                                            <strong>Progress :</strong>
-                                            <span class="pull-right text-muted">20% Complete</span>
-                                          </p>
-                                          <div class="progress progress-striped">
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                              <span class="sr-only">20% Complete (danger)</span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div><hr>
-                              </div>
-
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h4 class="media-heading">
-                                    <a href="">Project Name 3</a>
-                                  </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
-                                  <div class="media">
-                                    <div class="media-body">
-                                      <h5 class="media-heading">
-                                        <div>
-                                          <p>
-                                            <strong>Progress :</strong>
-                                            <span class="pull-right text-muted">60% Complete</span>
-                                          </p>
-                                          <div class="progress progress-striped">
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                              <span class="sr-only">60% Complete (warning)</span>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr>
-                              </div>
-
-                          <!-- ./List of the Projects End -->
 
                         </div>
                         <!-- /.panel-body -->
@@ -280,52 +226,30 @@ $.ajax({
                         <div class="panel-heading">
                             <i class="fa fa-flag-checkered fa-fw"></i> Recommended Projects
                         </div>
+                        <script type="text/javascript">
+                          $(function() {
+
+                            $.ajax({
+                              url: "https://westus.api.cognitive.microsoft.com/recommendations/v4.0/models/9a63974a-349b-473a-9a62-5462abb95d70/recommend/user?userId=0003BFFDC7118D12&numberOfResults=2&itemsIds=QR2-00011&buildId=1574827&itemsIds=QR2-00011&buildId=1574827",
+                              beforeSend: function(xhrObj){
+                                // Request headers
+                                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","5f5dfe2e446842e2b5d11a9c1adc9db5");
+                              },
+                              type: "GET",
+                              // Request body
+                              data: "{body}",
+                            })
+                            .done(function(data){
+                              console.log(data.recommendedItem);
+                            })
+                            .fail(function() {
+                              alert("error");
+                            });
+                          });
+                        </script>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h5 class="media-heading">
-                                    Project Name 1
-                                  </h5>
-                                  <h6> Description Description Description Description Description Description Description </h6>
-                                </div>
-                                <div class="row"><hr></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h5 class="media-heading">
-                                    Project Name 1
-                                  </h5>
-                                  <h6> Description Description Description Description Description Description Description </h6>
-                                </div>
-                                <hr>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h5 class="media-heading">
-                                    Project Name 1
-                                  </h5>
-                                  <h6> Description Description Description Description Description Description Description </h6>
-                                </div>
-                                <hr>
-                              </div>
-                          </div>
+                        <div class="panel-body cus-rec-proj">
+                          Sorry. No recommendations yet.
                         </div>
                         <!-- /.panel-body -->
                     </div>
