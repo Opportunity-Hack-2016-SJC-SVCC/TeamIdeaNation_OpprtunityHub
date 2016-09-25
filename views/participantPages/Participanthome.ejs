@@ -87,6 +87,7 @@ $.ajax({
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header cus-page-header"><%=name%></h1>
+                    <h3 class="page-header cus-page-header">Hi, Firstname Lastname !</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -101,7 +102,7 @@ $.ajax({
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">12</div>
-                                    <div>Our Projects</div>
+                                    <div>My Projects</div>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +146,7 @@ $.ajax({
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div>New Messages</div>
                                 </div>
                             </div>
                         </div>
@@ -161,16 +162,19 @@ $.ajax({
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                             Search
+                      <div class="panel-body">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search Projects...">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                         </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
+                      </div>
+                      <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                     <div class="panel panel-default">
@@ -181,13 +185,11 @@ $.ajax({
                         <div class="panel-body">
 
                           <!-- List of the Projects -->
-                          <div class="row">
-                            <div class="col-md-12">
                               <div class="media">
                                 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
                                 <div class="media-body">
                                   <h4 class="media-heading">
-                                    Project Name 1
+                                    <a href="">Project Name 1</a>
                                   </h4> Description Description Description Description Description Description Description Description Description Description Description DescriptionDescription Description Description Description Description Description Description Description Description Description Description Description
                                   <div class="media">
                                     <div class="media-body">
@@ -211,16 +213,12 @@ $.ajax({
                                 </div>
                                 <div class="row cus-row-margin"><hr></div>
                               </div>
-                            </div>
-                          </div>
 
-                          <div class="row">
-                            <div class="col-md-12">
                               <div class="media">
                                 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
                                 <div class="media-body">
                                   <h4 class="media-heading">
-                                    Project Name 2
+                                    <a href="">Project Name 2</a>
                                   </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
                                   <div class="media">
                                     <div class="media-body">
@@ -237,22 +235,16 @@ $.ajax({
                                           </div>
                                         </div>
                                       </h5>
-                                      <div> </div>
                                     </div>
                                   </div>
-                                </div>
-                                <div class="row cus-row-margin"><hr></div>
+                                </div><hr>
                               </div>
-                            </div>
-                          </div>
 
-                          <div class="row">
-                            <div class="col-md-12">
                               <div class="media">
                                 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
                                 <div class="media-body">
                                   <h4 class="media-heading">
-                                    Project Name 3
+                                    <a href="">Project Name 3</a>
                                   </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
                                   <div class="media">
                                     <div class="media-body">
@@ -269,15 +261,11 @@ $.ajax({
                                           </div>
                                         </div>
                                       </h5>
-                                      <div> </div>
-                                      <div class="row cus-row-margin"></div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class="row cus-row-margin"><hr></div>
+                                <hr>
                               </div>
-                            </div>
-                          </div>
 
                           <!-- ./List of the Projects End -->
 
@@ -287,6 +275,64 @@ $.ajax({
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-flag-checkered fa-fw"></i> Recommended Projects
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="media">
+                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading">
+                                    Project Name 1
+                                  </h5>
+                                  <h6> Description Description Description Description Description Description Description </h6>
+                                </div>
+                                <div class="row"><hr></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                              <div class="media">
+                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading">
+                                    Project Name 1
+                                  </h5>
+                                  <h6> Description Description Description Description Description Description Description </h6>
+                                </div>
+                                <hr>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                              <div class="media">
+                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/20/20/" class="media-object" /></a>
+                                <div class="media-body">
+                                  <h5 class="media-heading">
+                                    Project Name 1
+                                  </h5>
+                                  <h6> Description Description Description Description Description Description Description </h6>
+                                </div>
+                                <hr>
+                              </div>
+                          </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+                <!-- /.col-lg-4 -->
+
+
             </div>
             <!-- /.row -->
         </div>
