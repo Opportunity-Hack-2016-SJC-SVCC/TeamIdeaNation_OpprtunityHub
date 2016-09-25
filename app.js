@@ -62,6 +62,12 @@ app.post('/participant/edit:id',participant.editProfile);
 app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
 app.post('/doLogin',users.doLogin);
+
+app.get('/', function(req, res){
+
+	res.render('index', {title:"Talent Bridge"});
+});
+
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);
