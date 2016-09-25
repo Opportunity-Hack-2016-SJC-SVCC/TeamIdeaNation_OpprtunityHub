@@ -68,4 +68,22 @@ app.controller('ProjectController',function($scope,$http){
         });
 	 }
 	 $scope.projectList();
+
+	 $scope.projectDisp = function(project){
+	 	$http({
+
+            method:"POST",
+            url:'/getProjectDisplay',
+            data : {
+               "project" : project
+            }
+            }).then(function(res){
+        	console.log(res.data.result);
+        	$scope.projects = res.data.result;
+        	
+        }, function(res) { //this will be called on error
+          console.log(res.data);
+        });
+
+	 }
 });

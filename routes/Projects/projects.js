@@ -1,7 +1,7 @@
 
 var mongo = require("../mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
-
+var ejs = require("ejs");
 exports.addProject = function(req,res)
 {
   var npoId = 12;
@@ -184,4 +184,20 @@ exports.getProjectList = function(req,res){
       }
   }
    mongo.find("PROJECT", queryJSON, callbackFunction);
+}
+
+exports.getProjectDisplay = function(req,res){
+  var project= req.param("project");
+  console.log(project);
+ejs.renderFile('./ProjectPages/project.ejs',{"project" : project} ,function(err, result) {
+            // render on success
+            if (!err) {
+              res.end(result);
+            }
+            // render or error
+            else {
+              res.end('An error occurred');
+              console.log(err);
+            }
+          });
 }

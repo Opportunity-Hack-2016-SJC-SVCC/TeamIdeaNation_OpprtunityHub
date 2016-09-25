@@ -62,13 +62,27 @@ app.post('/participant/edit:id',participant.editProfile);
 app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
 app.post('/doLogin',users.doLogin);
-
-app.post('/getProjectList',projects.getProjectList);
-app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
-	res.render('ProjectPages/project', {title:"Talent Bridge"});
+app.post('/getProjectDisplay',function(req,res){
+	res.render('ProjectPages/project');
+  res.end();
 });
+app.post('/getProjectList',projects.getProjectList);
 
-
+app.get('/:project',function(req,res){
+	console.log("prolist");
+	var proj = req.params.name("project");
+	ejs.renderFile('./ProjectPages/project.ejs',json ,function(err, result) {
+						// render on success
+						if (!err) {
+							res.end(result);
+						}
+						// render or error
+						else {
+							res.end('An error occurred');
+							console.log(err);
+						}
+					});
+});
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
