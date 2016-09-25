@@ -1,4 +1,5 @@
 exports.applyProject = function(req,res)
 {
-  //var 
+  //var projctId = 122; //Session varible here
+
 }
