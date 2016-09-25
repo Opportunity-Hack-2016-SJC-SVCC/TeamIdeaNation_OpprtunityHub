@@ -45,18 +45,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
 	//res.render('./projectPages/createproject', {title:"Talent Bridge"});
 	//res.render('./projectPages/projectlist', {title:"Talent Bridge"});
-	res.render('index', {title:"Talent Bridge"});
-});
-app.post('/', function(req, res){
 	res.render('index', {});
 });
 
 // API DETAILS //
 app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
-app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
+//app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 //app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
 app.get('/projects/display',projects.addProject);
+app.get('/projects/getProjectAddPage',projects.getCreateProject);
 app.get('/projects/display/:projectId',projects.addProject);
 
 app.post('/doUserSignup',users.doSignUp);
@@ -69,7 +67,7 @@ app.get('/participant/display',participant.displayProfile);
 
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
-
+app.get('/NPO/getHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
 	res.render('ProjectPages/project', {title:"Talent Bridge"});

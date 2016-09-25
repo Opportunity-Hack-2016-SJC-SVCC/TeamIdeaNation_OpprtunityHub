@@ -119,5 +119,11 @@ exports.getLoggedNPO = function(req,res)
 
 exports.nextStep = function(req,res)
 {
-	res.render('./NPOpages/NPOprofile.ejs',{name:req.session.name})
+	res.render('./NPOpages/NPOprofile.ejs',{name:req.session.name});
+}
+
+
+exports.getHomepage = function(req,res)
+{
+	res.render('./NPOpages/NPOhome.ejs',{name:req.session.name});
 }
