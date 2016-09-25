@@ -2,7 +2,7 @@
 var app=angular.module('indexAngular',[]);
 
 app.controller('LoginController',function($scope,$http){
-	
+
 
 	$scope.doLogin=function(){
 		console.log("doLogin-->");
@@ -20,7 +20,7 @@ app.controller('LoginController',function($scope,$http){
         }).then(function(res){
         	console.log(JSON.stringify(res));
         	if(res.data.statusCode == 200){
-        		
+
         		if(res.data.results.USERTYPE == 1){
         			console.log("NPO");
         		}
@@ -36,7 +36,7 @@ app.controller('LoginController',function($scope,$http){
 
 
 app.controller('SignUpController',function($scope,$http){
-	
+
 	$scope.hideError = true;
 	$scope.user = {
 		type:"user"
@@ -60,14 +60,14 @@ app.controller('SignUpController',function($scope,$http){
             	"name":$scope.name,
                 "email":$scope.email,
                 "password":$scope.password,
-                "usertype":$scope.category 
+                "usertype":$scope.category
             }
 
 
         }).then(function(res){
         	console.log(JSON.stringify(res));
         	if(res.data.statusCode == 200){
-        		
+
         		if(res.data.results.USERTYPE == 1){
         			console.log("NPO");
         		}
@@ -81,4 +81,3 @@ app.controller('SignUpController',function($scope,$http){
 		}
 	}
 });
-
