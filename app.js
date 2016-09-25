@@ -45,6 +45,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
 	res.render('index', {});
 });
+app.get('/index', function(req, res){
+	res.render('index0', {});
+});
 app.post('/', function(req, res){
 	res.render('index', {});
 });
@@ -66,7 +69,7 @@ app.post('/getProjectList',projects.getProjectList);
 
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
-	res.render('ProjectPages/project', {title:"Talent Bridge"});
+	res.render('ProjectPages/project', {});
 });
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
