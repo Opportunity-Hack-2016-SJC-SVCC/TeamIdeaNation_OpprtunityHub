@@ -57,9 +57,9 @@ app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
 //app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 //app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
-app.get('/projects/display',projects.addProject);
+//app.get('/projects/display',projects.addProject);
 app.get('/projects/getProjectAddPage',projects.getCreateProject);
-app.get('/projects/display/:projectId',projects.addProject);
+app.post('/projects/getProjectDetails',projects.getProjectDetails);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
 app.post('/participant/edit:id',participant.editProfile);
@@ -79,7 +79,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
-
+app.get('/projects/:projectId',projects.getDisplayPage);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
