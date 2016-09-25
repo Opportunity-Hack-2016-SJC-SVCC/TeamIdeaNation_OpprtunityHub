@@ -57,6 +57,8 @@ app.post('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
 
+app.post('/doLogin',users.doLogin);
+
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);

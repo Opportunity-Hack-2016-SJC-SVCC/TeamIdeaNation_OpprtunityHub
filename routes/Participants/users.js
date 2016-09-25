@@ -69,4 +69,31 @@ function doSignUp(req, res) {
   mongo.insertOne("USERS", queryJSONInsert, callbackFunction1);
 }
 
+function doLogin(req,res){
+  var email = req.param("email");
+  var password = req.param("password");
+
+   var queryJSON =
+   {
+    "EMAIL": email,
+    "PASSWORD":password
+   }
+   var callbackFunction = function(err,result){
+    console.log("Inside query");
+    if(err){
+      console.log(err)
+    }else{
+        if(result!=null){
+            console.log(result);
+            json_responses = {"statusCode" : 200,"results":result};
+            res.send(json_responses);
+        }else{
+          console.log("No user found");
+        }
+    }
+   }
+   mongo.findOne("USERS",queryJSON,callbackFunction);
+}
+
+exports.doLogin = doLogin;
 exports.doSignUp = doSignUp;
