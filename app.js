@@ -15,6 +15,10 @@ var passport = require('passport');
 // var discountCronJob = cron.job("*/10 * * * * *",cronRoute.processDiscount);
 // discountCronJob.start();
 
+// Routers call
+var NPOProfile = require('./routes/NPO/NPOProfile');
+var projects = require('./routes/Project/projects');
+
 app.use(expressSession({
 	secret: 'fjklowjafnkvnap',
     resave: false,
@@ -25,6 +29,7 @@ app.use(expressSession({
 		url: mongoSessionConnectURL
 	})
 }));
+
 app.use(passport.initialize());
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,6 +47,15 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
 	res.render('index', {});
 });
+
+
+// API DETAILS //
+app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
+app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
+app.post('/projects/add/:id',projects.addProject);
+app.post('/projects/display',projects.addProject);
+app.post('/projects/display/:projectId',projects.addProject);
+
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
