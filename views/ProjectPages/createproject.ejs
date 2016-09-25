@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="projectAngular">
 
 <head>
 
@@ -23,7 +23,9 @@
 
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="angularjs/projectAngular.js"></script>
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -54,7 +56,7 @@
 
             </div>
             <!-- /.row -->
-            <div class="row">
+            <div class="row" ng-controller="ProjectController">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                       <div class="panel-heading">
@@ -73,12 +75,12 @@
                               <div class="form-group">
                                   <div class="form-group">
                                     <span><label>Project Name</label>
-                                    <input class="form-control" placeholder="Enter text"></span>
+                                    <input class="form-control" placeholder="Enter text" ng-model="project_name"></span>
                                   </div>
 
                                   <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" ng-model="description"></textarea>
                                   </div>
                                   <div class="form-group">
                                     <label>Upload Image</label>
@@ -86,7 +88,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label>Youtube Video URL</label>
-                                    <input class="form-control" placeholder="Enter text">
+                                    <input class="form-control" placeholder="Enter text" ng-model="url">
                                   </div>
 
                                   <div class="row">
@@ -96,7 +98,7 @@
                                           Positions
                                           <div class="pull-right">
                                               <div class="btn-group">
-                                                  <button type="button" class="btn btn-default btn-xs">
+                                                  <button type="button" class="btn btn-default btn-xs" ng-click="addPosition()">
                                                       <i class="fa fa-plus-circle fa-fw"></i>Add Position
                                                   </button>
                                               </div>
@@ -117,29 +119,34 @@
                                                 <tr>
                                                   <td>1</td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="pos1">
                                                   </td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="des1">
                                                   </td>
                                                 </tr>
                                                 <tr>
-                                                  <td>1</td>
+                                                  <td>2</td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="pos2">
                                                   </td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="des2">
                                                   </td>
                                                 </tr>
                                                 <tr>
-                                                  <td>1</td>
+                                                  <td>3</td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="pos3">
                                                   </td>
                                                   <td>
-                                                    <input class="form-control" placeholder="Enter text">
+                                                    <input class="form-control" placeholder="Enter text" ng-model="des3">
                                                   </td>
+                                                </tr>
+                                                <tr ng-repeat="position in positions">
+                                                  <td>{{position.count}}</td>
+                                                  <td><input class="form-control" placeholder="Enter text" ng-model = "position.pos"></td>
+                                                  <td><input class="form-control" placeholder="Enter text" ng-model="position.des"></td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -155,7 +162,7 @@
                                   <!-- /.row -->
 
                               </div>
-                              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                              <button type="submit" class="btn btn-primary pull-right" ng-click="addProject(positions)">Submit</button>
                           </form>
                         </div>
                         <!-- /.panel-body -->

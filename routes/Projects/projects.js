@@ -136,15 +136,20 @@ exports.editProject = function(req,res)
 function doAddProject(req, res) {
 
 
-  var email=req.param("email");
-  var password=req.param("password");
-  console.log(email);
+  var npoId = req.session.user_id;
+  var org_name = req.session.name;
+  var project_name=req.param("PROJECT_TITLE");
+  var project_desc=req.param("PROJECT_DESC");
+  var positions = req.param("POSITIONS");
+  console.log(positions);
+  
 var queryJSON =
 {
-  "PROJECT_NAME" : project_name,
-  "PROJECT_TITLE":password,
-  "PROJECT_DESC":2,
-  "SKILL_SET":"",
+  "NPO_ID" : npoId,
+  "NAME" : org_name,
+  "PROJECT_TITLE": project_name,
+  "PROJECT_DESC": project_desc,
+  "SKILL_SET":positions,
   "DEADLINE":""
 }
 
@@ -154,15 +159,13 @@ var queryJSON =
             console.log(err);
         }
         else {
-			console.log(result);
-
-            //var jsonResponse={"customerDetails":result};
-            //res.customerDetails=result;
-            //callback(null, jsonResponse);
-
+			  // console.log(result);
+         var jsonRes = {"statuscode" : 200};
+         res.send(jsonRes);
         }
+         
     }
-    mongo.insertOne("USERS", queryJSON, callbackFunction);
+    mongo.insertOne("PROJECT", queryJSON, callbackFunction);
 }
 
 exports.doAddProject = doAddProject;
