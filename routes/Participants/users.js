@@ -13,14 +13,19 @@ function doSignUp(req, res) {
 
   var email=req.param("email");
   var password=req.param("password");
-  var user_type = 1;
+  var user_type = req.param("usertype");
+  var userTypeCode;
+  if(user_type == "user")
+    userTypeCode = 2;
+  else if(user_type == "npo")
+    userTypeCode = 1;
   console.log(email);
 
   var queryJSONInsert =
   {
     "EMAIL": email,
     "PASSWORD":password,
-    "USERTYPE":user_type
+    "USERTYPE":userTypeCode
   }
 
   var callbackFunction1 = function (err, result1) {
@@ -47,6 +52,7 @@ function doSignUp(req, res) {
                         console.log(err);
                     }
                     else{
+
                       console.log("User_id added successfully in NPO_DETAILS");
                     }
 
@@ -84,6 +90,7 @@ function doLogin(req,res){
       console.log(err)
     }else{
         if(result!=null){
+            req.session.email = email;
             console.log(result);
             json_responses = {"statusCode" : 200,"results":result};
             res.send(json_responses);
