@@ -2,7 +2,7 @@
 var ejs = require('ejs');
 //const crypto = require('crypto');
 
-var mongo = require("./mongo");
+var mongo = require("../mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
 //var passport = require('passport');
 //require('./passport')(passport);
@@ -10,7 +10,7 @@ var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
 function doSignUp(req, res) {
 
-  
+
   var email=req.param("email");
   var password=req.param("password");
   var user_type = 1;
@@ -51,7 +51,7 @@ function doSignUp(req, res) {
                     }
 
                 }
-               
+
                 var user_id = new require('mongodb').ObjectID(result2._id);
                 //console.log("USER_ID-->"+user_id);
                 var npo_id_query = {"USER_ID" : user_id};
