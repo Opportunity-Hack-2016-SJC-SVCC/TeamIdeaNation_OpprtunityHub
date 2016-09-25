@@ -1,4 +1,3 @@
-
 var express = require('express')
   ,  app = express()
 	, http = require('http').Server(app)
@@ -10,7 +9,7 @@ var bodyParser = require('body-parser');
 var mongoStore = require("connect-mongo")(expressSession);
 var mongoSessionConnectURL = "mongodb://localhost:27017/amazon_fresh";   //Change this if needed ................................//
 var passport = require('passport');
-var users=require('./routes/users');
+var users=require('./routes/Participants/users');
 //require('./routes/passport')(passport);
 // var cron = require('cron');
 // var discountCronJob = cron.job("*/10 * * * * *",cronRoute.processDiscount);
@@ -56,6 +55,7 @@ app.post('/projects/add/:id',projects.addProject);
 app.post('/projects/display',projects.addProject);
 app.post('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
+app.post('/doAddProject',project.doAddProject);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

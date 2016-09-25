@@ -8,7 +8,7 @@ var mongoURL = "mongodb://localhost:27017/DEVPOST";
 //require('./passport')(passport);
 //var mq_client = require('../rpc/client');
 
-function doSignUp(req, res) {
+function doAddProject(req, res) {
 
   
   var email=req.param("email");
@@ -16,9 +16,11 @@ function doSignUp(req, res) {
   console.log(email);
 var queryJSON =
 {
-  
-  "EMAIL": email,
-  "PASSWORD":password
+  "PROJECT_NAME" : project_name;
+  "PROJECT_TITLE":password
+  "PROJECT_DESC":2,
+  "SKILL_SET":,
+  "DEADLINE":
 }
 
   var callbackFunction = function (err, result) {
@@ -38,4 +40,4 @@ var queryJSON =
     mongo.insertOne("USERS", queryJSON, callbackFunction);
 }
 
-exports.doSignUp = doSignUp;
+exports.doAddProject = doAddProject;

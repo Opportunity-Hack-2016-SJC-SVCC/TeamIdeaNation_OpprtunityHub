@@ -1,32 +1,33 @@
+
 var mongo = require("./mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
 exports.addProject = function(req,res)
 {
-	var npoId = 12;
-	var projctTitle = req.body["PROJECT_TITLE"];
-	var projectDesc = req.body["PROJECT_DESC"];
-	var skillSet = req.body["SKILL_SET"];
-	var deadline = req.body["DEADLINE"];
-	var datePosted = new Date().now();
+  var npoId = 12;
+  var projctTitle = req.body["PROJECT_TITLE"];
+  var projectDesc = req.body["PROJECT_DESC"];
+  var skillSet = req.body["SKILL_SET"];
+  var deadline = req.body["DEADLINE"];
+  var datePosted = new Date().now();
 
-	var queryJSON =
-	{
-		"NPO_ID" : npoId,
-		"PROJECT_TITLE" : projctTitle,
-		"PROJECT_DESC" : projectDesc,
-		"SKILL_SET" : skillSet,
-		"DEADLINE" : deadline,
-		"DATE_POSTED" : datePosted
-	}
+  var queryJSON =
+  {
+    "NPO_ID" : npoId,
+    "PROJECT_TITLE" : projctTitle,
+    "PROJECT_DESC" : projectDesc,
+    "SKILL_SET" : skillSet,
+    "DEADLINE" : deadline,
+    "DATE_POSTED" : datePosted
+  }
 
-	var callbackFunction = function (err, result) {
+  var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
         }
         else {
-			console.log(result);
+      console.log(result);
             
             var jsonResponse={"projectDetails":result};
             //res.customerDetails=result;
@@ -39,20 +40,20 @@ exports.addProject = function(req,res)
 
 exports.displayAllProjects = function(req,res)
 {
-	var npoId =12;
+  var npoId =12;
 
-	var queryJSON =
-	{
-		"NPO_ID" : npoId
-	}
+  var queryJSON =
+  {
+    "NPO_ID" : npoId
+  }
 
-	var callbackFunction = function (err, result) {
+  var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
         }
         else {
-			console.log(result);
+      console.log(result);
             
             var jsonResponse={"projects":result};
             //res.customerDetails=result;
@@ -65,22 +66,22 @@ exports.displayAllProjects = function(req,res)
 
 exports.displayProject = function(req,res)
 {
-	var npoId = 12;
-	var projectId = req.body['projectId'];
+  var npoId = 12;
+  var projectId = req.body['projectId'];
 
-	var queryJSON = 
-	{
-		"NPO_ID" : npoId,
-		"_id" : ObjectId(projectId)
-	}
+  var queryJSON = 
+  {
+    "NPO_ID" : npoId,
+    "_id" : ObjectId(projectId)
+  }
 
-	var callbackFunction = function (err, result) {
+  var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
         }
         else {
-			console.log(result);
+      console.log(result);
             
             var jsonResponse={"projects":result};
             //res.customerDetails=result;
@@ -88,33 +89,66 @@ exports.displayProject = function(req,res)
 
         }
     }
-    mongo.findOne("PROJECT", queryJSON, callbackFunction);	
+    mongo.findOne("PROJECT", queryJSON, callbackFunction);  
 }
 
 exports.editProject = function(req,res)
 {
-	var npoId = 12,
-	var projectId = req.body['projectId'];
-	var projctTitle = req.body["PROJECT_TITLE"];
-	var projectDesc = req.body["PROJECT_DESC"];
-	var skillSet = req.body["SKILL_SET"];
-	var deadline = req.body["DEADLINE"];
+  var npoId = 12,
+  var projectId = req.body['projectId'];
+  var projctTitle = req.body["PROJECT_TITLE"];
+  var projectDesc = req.body["PROJECT_DESC"];
+  var skillSet = req.body["SKILL_SET"];
+  var deadline = req.body["DEADLINE"];
 
-	var queryJSON =
-	{
-		"NPO_ID" : npoId,
-		"_id" : ObjectId(projectId)
-	}
+  var queryJSON =
+  {
+    "NPO_ID" : npoId,
+    "_id" : ObjectId(projectId)
+  }
 
-	var updateQuery = 
-	{
-		"PROJECT_TITLE" : projctTitle,
-		"PROJECT_DESC" : projectDesc,
-		"SKILL_SET" : skillSet,
-		"DEADLINE" : deadline
-	}
+  var updateQuery = 
+  {
+    "PROJECT_TITLE" : projctTitle,
+    "PROJECT_DESC" : projectDesc,
+    "SKILL_SET" : skillSet,
+    "DEADLINE" : deadline
+  }
 
-	var callbackFunction = function (err, result) {
+  var callbackFunction = function (err, result) {
+
+        if (err) {
+            console.log(err);
+        }
+        else {
+      console.log(result);
+            
+            //var jsonResponse={"customerDetails":result};
+            //res.customerDetails=result;
+            //callback(null, jsonResponse);
+
+        }
+    }
+    mongo.updateOne("PROJECT", queryJSON, updateJSON, callbackFunction);
+}
+
+
+function doAddProject(req, res) {
+
+  
+  var email=req.param("email");
+  var password=req.param("password");
+  console.log(email);
+var queryJSON =
+{
+  "PROJECT_NAME" : project_name;
+  "PROJECT_TITLE":password
+  "PROJECT_DESC":2,
+  "SKILL_SET":,
+  "DEADLINE":
+}
+
+  var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
@@ -128,5 +162,7 @@ exports.editProject = function(req,res)
 
         }
     }
-    mongo.updateOne("PROJECT", queryJSON, updateJSON, callbackFunction);
+    mongo.insertOne("USERS", queryJSON, callbackFunction);
 }
+
+exports.doAddProject = doAddProject;
