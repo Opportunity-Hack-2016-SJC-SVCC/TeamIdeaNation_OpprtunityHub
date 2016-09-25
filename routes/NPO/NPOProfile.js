@@ -5,40 +5,53 @@ var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
 exports.NPOProfileEdit = function(req,res)
 {
+	var json_responses = {};
 	console.log("Here");
 	var name = req.body["name"];
+	var email = req.body["email"];
+	var password = req.body["password"];
 	var address = req.body["address"];
 	var website = req.body["website"];
-	var description = req.body["description"];
-	var image = req.body["image"];
+	var aboutUs = req.body["aboutUs"];
 	var video = req.body["video"];
-	var userId = 12
+
 
 	var updateJSON =
 	{
+			"USER_ID":new require('mongodb').ObjectID(req.session.userId),
   		"NAME": name,
+			"EMAIL":email,
+			"PASSWORD":password,
   		"ADDRESS":address,
   		"WEBSITE":website,
-  		"DESCRIPTION":description,
-  		"IMAGE":image,
+  		"DESCRIPTION":aboutUs,
   		"WEBSITE":website,
   		"VIDEO":video
 	}
 
 	var queryJSON =
 	{
-		"USER_ID" : userId
+		"USER_ID" : new require('mongodb').ObjectID(req.session.userId)
 	}
 
 	var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
+						var jsonResponse={"statusCode":401};
+						res.send(jsonResponse);
         }
         else {
 			console.log(result);
-
-            //var jsonResponse={"customerDetails":result};
+			req.session.name= name;
+			req.session.email=email;
+  		req.session.address=address;
+  		req.session.website=website;
+  		req.session.aboutUs=aboutUs;
+  		req.session.website=website;
+  		req.session.video=video;
+      var jsonResponse={"statusCode":200,"session":req.session};
+			res.send(jsonResponse);
             //res.customerDetails=result;
             //callback(null, jsonResponse);
 
@@ -49,23 +62,31 @@ exports.NPOProfileEdit = function(req,res)
 
 exports.NPOProfileDisplay = function(req,res)
 {
+	console.log("#######################################################################"+req.session.userId);
 	var queryJSON =
 	{
-		"userId" : 12
+		"USER_ID" : new require('mongodb').ObjectID(req.session.userId)
 	}
 
 	var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
+						var jsonResponse={"statusCode":401};
+						res.send(jsonResponse);
         }
         else {
 			console.log(result);
-
-            var jsonResponse={"NPODetails":result};
+			req.session.name= result.NAME;
+			req.session.email=result.EMAIL;
+			req.session.address=result.ADDRESS;
+			req.session.website=result.WEBSITE;
+			req.session.aboutUs=result.ABOUTUS;
+			req.session.website=result.WEBSITE;
+			req.session.video=result.VIDEO;
+            var jsonResponse={"NPODetails":result,"session":req.session,"statusCode":200};
+						res.send(jsonResponse);
             //res.customerDetails=result;
-            callback(null, jsonResponse);
-
         }
     }
 
@@ -94,4 +115,9 @@ exports.getLoggedNPO = function(req,res)
 	}
 
 	mongo.find("NPO_DETAILS",queryJSON,callbackFunction);
+}
+
+exports.nextStep = function(req,res)
+{
+	res.render('./NPOpages/NPOprofile.ejs',{name:req.session.name})
 }

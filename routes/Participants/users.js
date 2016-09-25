@@ -12,9 +12,12 @@ function doSignUp(req, res) {
 
 
   var email=req.param("email");
+  var name = req.param("name");
   var password=req.param("password");
   var user_type = req.param("usertype");
   var userTypeCode;
+  var json_responses ={};
+
   if(user_type == "user")
     userTypeCode = 2;
   else if(user_type == "npo")
@@ -23,6 +26,7 @@ function doSignUp(req, res) {
 
   var queryJSONInsert =
   {
+    "NAME":name,
     "EMAIL": email,
     "PASSWORD":password,
     "USERTYPE":userTypeCode
@@ -35,7 +39,7 @@ function doSignUp(req, res) {
     else{
       console.log(result1)
 			 console.log("data inserted successfully in USERS table");
-          if(user_type == 1){
+          if(userTypeCode == 1){
             var queryJSONFind = {"EMAIL": email};
             var callbackFunction2 = function (err, result2) {
               if (err) {
@@ -47,20 +51,41 @@ function doSignUp(req, res) {
                     console.log("Data fetched successfully from USERS");
                     console.log(result2);
                     var callbackFunction3 = function(err,result3){
-                    console.log(result2);
+                    console.log(result3);
                     if(err){
                         console.log(err);
+                        json_responses.statusCode = 401;
+                        res.send(json_responses);
                     }
                     else{
 
                       console.log("User_id added successfully in NPO_DETAILS");
+                      console.log(result3.ops[0].USER_ID);
+                      json_responses.statusCode = 200;
+                      json_responses.USERTYPE = userTypeCode;
+                      json_responses.userId = result3.ops[0].USER_ID;
+                      req.session.userId = result3.ops[0].USER_ID;
+                      req.session.name = result3.ops[0].NAME;
+                      res.send(json_responses);
                     }
 
                 }
 
-                var user_id = new require('mongodb').ObjectID(result2._id);
+                //var user_id = new require('mongodb').ObjectID(result2._id).valueOf();
+                //var user_id =  ObjectId(result2._id).str;
                 //console.log("USER_ID-->"+user_id);
-                var npo_id_query = {"USER_ID" : user_id};
+                var ObjectId = require('mongodb').ObjectId;
+                var id = result2._id;
+                console.log("#####################################ergaergqergqergqgqgagreg##################"+id.str);
+                var o_id = new ObjectId(id).str;
+                var npo_id_query = {"USER_ID" : result2._id, "NAME":name,
+			                             "EMAIL":email,
+			                              "PASSWORD":password,
+  		                              "ADDRESS":"",
+  		                              "WEBSITE":"",
+  		                              "DESCRIPTION":"",
+  		                              "WEBSITE":"",
+  		                              "VIDEO":""};
                 mongo.insertOne("NPO_DETAILS", npo_id_query, callbackFunction3);
               }
             }
@@ -68,7 +93,41 @@ function doSignUp(req, res) {
           mongo.findOne("USERS", queryJSONFind, callbackFunction2);
         }
         else{
-            console.log("Participant added!!!");
+          var queryJSONFind = {"EMAIL": email};
+          var callbackFunction2 = function (err, result2) {
+            if (err) {
+              console.log(err);
+            }
+            else {
+              console.log(result2);
+              if(result2!=null){
+                  console.log("Data fetched successfully from USERS");
+                  console.log(result2);
+                  var callbackFunction3 = function(err,result3){
+                  console.log(result2);
+                  if(err){
+                      console.log(err);
+                      json_responses.statusCode = 401;
+                      res.send(json_responses);
+                  }
+                  else{
+
+                    console.log("User_id added successfully in PARTICIPANTS");
+                    json_responses.statusCode = 200;
+                    json_responses.USERTYPE = userTypeCode;
+                    res.send(json_responses);
+                  }
+
+              }
+
+              var user_id = new require('mongodb').ObjectID(result2._id);
+              //console.log("USER_ID-->"+user_id);
+              var npo_id_query = {"USER_ID" : user_id};
+              mongo.insertOne("NPO_DETAILS", npo_id_query, callbackFunction3);
+            }
+          }
+        }
+        mongo.findOne("USERS", queryJSONFind, callbackFunction2);
         }
     }
   }
