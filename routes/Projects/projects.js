@@ -1,4 +1,3 @@
-
 var mongo = require("../mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
@@ -42,7 +41,7 @@ exports.getProjectDetails = function(req,res)
 { 
 
   var projectId = req.body["projectId"];
-
+  console.log(projectId);
       var callbackFunction = function (err, result) {
 
         if (err) {
@@ -50,7 +49,7 @@ exports.getProjectDetails = function(req,res)
         }
         else {
       console.log(result);
-
+            console.log(result);
             var jsonResponse={"results":result,statuscode:200};
             //res.customerDetails=result;
             //callback(null, jsonResponse);
@@ -163,7 +162,7 @@ var queryJSON =
             console.log(err);
         }
         else {
-			  // console.log(result);
+        // console.log(result);
          var jsonRes = {"statuscode" : 200};
          res.send(jsonRes);
         }
