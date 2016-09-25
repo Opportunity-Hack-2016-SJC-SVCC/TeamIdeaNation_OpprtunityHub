@@ -1,22 +1,32 @@
+var mongo = require('../mongo')
+
 exports.displayProfile = function(req,res)
 {
   var queryJSON =
   {
-    "userId" : 12  //Session varibale here
+    "USER_ID" : req.session.userId //Session varibale here
   }
 
   var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
+            var jsonResponse={"statusCode":401};
+						res.send(jsonResponse);
         }
         else {
       console.log(result);
+      req.session.name= result.NAME;
+      req.session.email=result.EMAIL;
+      req.session.address=result.ADDRESS;
+      req.session.website=result.WEBSITE;
+      req.session.description=result.DESCRIPTION;
+      req.session.website=result.WEBSITE;
+      req.session.skillSet=result.SKILL_SET;
+      req.session.password=result.PASSWORD
 
-            var jsonResponse={"participantDetails":result};
-            //res.customerDetails=result;
-            callback(null, jsonResponse);
-
+      var jsonResponse={"session":req.session,"statusCode":200};
+      res.send(jsonResponse);
         }
     }
 
@@ -85,4 +95,9 @@ exports.getLoggedParticipant = function(req,res)
   }
 
   mongo.find("PARTICIPANT",queryJSON,callbackFunction);
+}
+
+exports.nextStepParticipant = function(req,res)
+{
+  res.render('./participantPages/participantProfile',{});
 }

@@ -73,8 +73,9 @@ app.controller('SignUpController',function($scope,$http){
 							var path = "/NPO/edit/"+res.data.userId;
 							window.location.assign("/nextStep");
         		}
-        		else if(res.data.USERTYPE == 1){
-        			console.log("Participant")
+        		else if(res.data.USERTYPE == 2){
+        			console.log("Participant");
+							window.location.assign('/nextStepParticipant');
         		}
         	}
         }, function(res) { //this will be called on error

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Participantangular">
 
 <head>
 
@@ -27,6 +27,9 @@
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="angularjs/participantProfileAngular.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -42,7 +45,7 @@
     <!-- ------------------- Nav Partial ------------------------->
     <% include ../partials/nav-loggedin-npo %>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" ng-controller="participantEditController" data-ng-init="init()">
             <div class="row">
                 <div class="col-lg-12">
                     <h3 class="page-header cus-page-header">--Volunteer NAME--</h3>
@@ -73,19 +76,19 @@
                               <div class="form-group">
                                   <div class="form-group">
                                     <span><label>Name</label>
-                                    <input class="form-control" placeholder="Enter text"></span>
+                                    <input class="form-control" placeholder="Enter text" ng-model="name" value="{{name}}"></span>
                                   </div>
 
                                   <div class="form-group">
                                     <label>Email ID</label>
-                                    <input class="form-control" placeholder="Enter text">
+                                    <input class="form-control" placeholder="Enter text" ng-model="email" value="{{email}}">
                                   </div>
 
                                   <div class="row cus-row-margin">
                                     <div class="col-lg-6">
                                       <div class="form-group">
                                         <label>Password</label>
-                                        <input class="form-control" placeholder="Enter text" type="password">
+                                        <input class="form-control" placeholder="Enter text" type="password"  type="password" ng-model="password" value="{{password}}">
                                       </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -98,17 +101,22 @@
 
                                   <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" ng-model="description" value="{{description}}"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label>Skill Set</label>
+                                    <textarea class="form-control" rows="3" ng-model="skillSet" value="{{skillSet}}"></textarea>
                                   </div>
 
                                   <div class="form-group">
                                     <label>Address</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" rows="3" ng-model="address" value="{{address}}"></textarea>
                                   </div>
 
                                   <div class="form-group">
                                     <label>Website</label>
-                                    <input class="form-control" placeholder="Enter text">
+                                    <input class="form-control" placeholder="Enter text" ng-model="website" value="{{website}}>
                                   </div>
 
                                   <div class="form-group">
@@ -117,7 +125,7 @@
                                   </div>
 
                               </div>
-                              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                              <button type="submit" class="btn btn-primary pull-right" ng-click="doEditParticipant()">Submit</button>
                           </form>
                         </div>
                         <!-- /.panel-body -->

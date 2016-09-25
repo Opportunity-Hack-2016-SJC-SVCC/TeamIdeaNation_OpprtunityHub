@@ -103,10 +103,10 @@ function doSignUp(req, res) {
               if(result2!=null){
                   console.log("Data fetched successfully from USERS");
                   console.log(result2);
-                  var callbackFunction3 = function(err,result3){
-                  console.log(result2);
+                  var callbackFunction4 = function(err4,result4){
+                  console.log(result4);
                   if(err){
-                      console.log(err);
+                      console.log(err4);
                       json_responses.statusCode = 401;
                       res.send(json_responses);
                   }
@@ -115,6 +115,9 @@ function doSignUp(req, res) {
                     console.log("User_id added successfully in PARTICIPANTS");
                     json_responses.statusCode = 200;
                     json_responses.USERTYPE = userTypeCode;
+                    json_responses.userId = result4.ops[0].USER_ID;
+                    req.session.userId = result4.ops[0].USER_ID;
+                    req.session.name = result4.ops[0].NAME;
                     res.send(json_responses);
                   }
 
@@ -122,8 +125,18 @@ function doSignUp(req, res) {
 
               var user_id = new require('mongodb').ObjectID(result2._id);
               //console.log("USER_ID-->"+user_id);
-              var npo_id_query = {"USER_ID" : user_id};
-              mongo.insertOne("NPO_DETAILS", npo_id_query, callbackFunction3);
+              var participant_id_query =
+              {
+                "USER_ID" : result2._id,
+                "NAME":name,
+                "EMAIL":email,
+                "PASSWORD":password,
+                "DESCRIPTION":"",
+                "ADDRESS":"",
+                "WEBSITE":"",
+                "SKILL_SET":""
+              };
+              mongo.insertOne("PARTICIPANTS", participant_id_query, callbackFunction4);
             }
           }
         }
