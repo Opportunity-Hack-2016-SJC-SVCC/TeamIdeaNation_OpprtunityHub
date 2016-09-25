@@ -61,9 +61,7 @@ app.post('/doAddProject',projects.doAddProject);
 app.post('/participant/edit:id',participant.editProfile);
 app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
-
 app.post('/doLogin',users.doLogin);
-
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);
