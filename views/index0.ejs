@@ -119,7 +119,82 @@
     </div>
     <!-- /#wrapper -->
 
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class=
+    "modal fade" id="modal-container-990751" role="dialog" ng-controller="LoginController">
+    <div class="modal-dialog">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="login-panel panel panel-default">
+                          <div class="panel-heading">
+                              <h3 class="panel-title">Please Log In</h3>
+                          </div>
+                            <div class="panel-body">
+                                <form role="form">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="E-mail" name="email" type="email" ng-model="email" autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Password" name="password" type="password" ng-model = "password" value="">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                            </label>
+                                        </div>
+                                        <button class="btn btn-primary btn-block" ng-click="doLogin()">Log In</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+    </div>
 
+    <!-- Sign Up Modal -->
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="modal-container-990750" role="dialog" ng-controller="SignUpController">
+    <div class="modal-dialog">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="login-panel panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Please Sign Up</h3>
+              </div>
+                <div class="panel-body">
+                          <form role="form">
+                            <div class="form-group">
+                                <label>Who are you?</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosInline" ng-model="user.type" id="optionsRadiosInline1" value="user" checked>A Volunteer
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosInline" ng-model="user.type" id="optionsRadiosInline2" value="npo">A Non-Profit Organization
+                                </label>
+                            </div>
+
+                              <div class="form-group">
+                                    <label>Name</label>
+                                  <input class="form-control" placeholder="Enter text" ng-model = "name">
+                                  <label>Email ID</label>
+                                  <input class="form-control" placeholder="Enter text" ng-model = "email">
+                                  <label>Password</label>
+                                  <input class="form-control" placeholder="Enter text" type="password" ng-model="password">
+                                  <label>Confirm Password</label>
+                                  <input class="form-control" placeholder="Enter text" type="password" ng-model="confirmpwd">
+                              </div>
+                              <button type="submit" class="btn btn-primary pull-right" ng-click="doSignUp()">Submit</button>
+                              <div id="hideError" ng-hide = "hideError">Passwords doesn't match.</div>
+                          </form>
+                  </div>
+                  <!-- /.row (nested) -->
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
     <!-- jQuery -->
