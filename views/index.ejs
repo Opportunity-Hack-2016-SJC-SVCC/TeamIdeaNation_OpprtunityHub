@@ -629,7 +629,7 @@
 
     <!-- Sign Up Modal -->
     <div aria-hidden="true" aria-labelledby="myModalLabel" class=
-    "modal fade" id="modal-container-990750" role="dialog">
+    "modal fade" id="modal-container-990750" role="dialog" ng-controller="SignUpController">
     <div class="modal-dialog">
       <div class="row">
         <div class="col-md-12">
@@ -642,22 +642,25 @@
                             <div class="form-group">
                                 <label>Who are you?</label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="user" checked>A Volunteer
+                                    <input type="radio" name="optionsRadiosInline" ng-model="user.type" id="optionsRadiosInline1" value="user" checked>A Volunteer
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="npo">A Non-Profit Organization
+                                    <input type="radio" name="optionsRadiosInline" ng-model="user.type" id="optionsRadiosInline2" value="npo">A Non-Profit Organization
                                 </label>
                             </div>
 
                               <div class="form-group">
+                                    <label>Name</label>
+                                  <input class="form-control" placeholder="Enter text" ng-model = "name">
                                   <label>Email ID</label>
-                                  <input class="form-control" placeholder="Enter text">
+                                  <input class="form-control" placeholder="Enter text" ng-model = "email">
                                   <label>Password</label>
-                                  <input class="form-control" placeholder="Enter text" type="password">
+                                  <input class="form-control" placeholder="Enter text" type="password" ng-model="password">
                                   <label>Confirm Password</label>
-                                  <input class="form-control" placeholder="Enter text" type="password">
+                                  <input class="form-control" placeholder="Enter text" type="password" ng-model="confirmpwd">
                               </div>
-                              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                              <button type="submit" class="btn btn-primary pull-right" ng-click="doSignUp()">Submit</button>
+                              <div id="hideError" ng-hide = "hideError">Passwords doesn't match.</div>
                           </form>
                   </div>
                   <!-- /.row (nested) -->
