@@ -44,11 +44,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //All GET methods...........................//
 app.get('/', function(req, res){
 
-	res.render('index', {title:"Talent Bridge"});
+	res.render('./participantPages/participantProfile', {title:"Talent Bridge"});
 });
-app.post('/', function(req, res){
-	res.render('index', {});
-});
+//app.post('/', function(req, res){
+//	res.render('index', {});
+//});
 
 // API DETAILS //
 app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
