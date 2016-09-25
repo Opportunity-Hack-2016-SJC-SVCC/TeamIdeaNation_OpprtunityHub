@@ -55,9 +55,9 @@ app.post('/projects/add/:id',projects.addProject);
 app.post('/projects/display',projects.addProject);
 app.post('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
-app.post('/doAddProject',project.doAddProject);
-app.get('/NPOhome',function(req, res){
-  res.render('NPOpages/NPOhome',{});
+app.post('/doAddProject',projects.doAddProject);
+app.get('/NPOProfile',function(req, res){
+  res.render('NPOpages/NPOprofile',{});
 });
 app.post('/doAddProject',projects.doAddProject);
 function isAuthenticated(req, res, next) {
