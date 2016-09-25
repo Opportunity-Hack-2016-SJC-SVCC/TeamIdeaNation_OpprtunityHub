@@ -48,7 +48,7 @@ app.controller('SignUpController',function($scope,$http){
 		console.log("doSignUp-->");
 		console.log($scope.email);
 		console.log($scope.user);
-		alert($scope.user.type);
+		//alert($scope.user.type);
 		console.log($scope);
 		if($scope.password != $scope.confirmpwd){
 			$scope.hideError = false;
@@ -67,7 +67,7 @@ app.controller('SignUpController',function($scope,$http){
 
 
         }).then(function(res){
-        	alert(JSON.stringify(res));
+        	//alert(JSON.stringify(res));
         	if(res.data.statusCode == 200){
 
         		if(res.data.USERTYPE == 1){
