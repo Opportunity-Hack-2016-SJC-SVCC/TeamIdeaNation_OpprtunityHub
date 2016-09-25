@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //All GET methods...........................//
 app.get('/', function(req, res){
 
-	res.render('./projectPages/createproject', {title:"Talent Bridge"});
+	res.render('./projectPages/projectlist', {title:"Talent Bridge"});
 });
 //app.post('/', function(req, res){
 //	res.render('index', {});
@@ -63,10 +63,12 @@ app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
 app.post('/doLogin',users.doLogin);
 
+app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
-
 	res.render('ProjectPages/project', {title:"Talent Bridge"});
 });
+
+
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

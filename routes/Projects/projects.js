@@ -169,3 +169,19 @@ var queryJSON =
 }
 
 exports.doAddProject = doAddProject;
+
+exports.getProjectList = function(req,res){
+  var queryJSON = {};
+  var callbackFunction = function(err,result){
+      if(err){
+        console.log(err);
+      }
+      else{
+        if(result!=null){
+          var resJson = {"result" : result};
+          res.send(resJson);
+        }
+      }
+  }
+   mongo.find("PROJECT", queryJSON, callbackFunction);
+}
