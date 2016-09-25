@@ -60,10 +60,10 @@ app.post('/', function(req, res){
 app.post('/NPOeditprofile',NPOProfile.NPOProfileEdit);
 app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
-app.get('/projects/display',projects.addProject);
+//app.get('/projects/display',projects.addProject);
 app.get('/projects/getProjectAddPage',projects.getCreateProject);
+app.post('/projects/getProjectDetails',projects.getProjectDetails);
 app.get('/projects/display/:projectId',projects.addProject);
-
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
 
@@ -87,7 +87,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
-
+app.get('/projects/:projectId',projects.getDisplayPage);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
