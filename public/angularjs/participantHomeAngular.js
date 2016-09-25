@@ -4,6 +4,11 @@ app.controller('participantHomeAngular',function($scope,$http){
 
 	console.log("try this");
 
+//	$scope.doKeywordSearch = function()
+	//{
+		
+	//}
+
 	$scope.init = function()
 	{
 		$http({

@@ -165,6 +165,7 @@ function doLogin(req,res){
             req.session.email = email;
             console.log(result);
             req.session.userId = result._id;
+            req.session.name = result.NAME;
             json_responses = {"statusCode" : 200,"results":result};
             res.send(json_responses);
         }else{
