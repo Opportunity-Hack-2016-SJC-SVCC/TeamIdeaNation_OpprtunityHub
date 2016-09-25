@@ -43,7 +43,7 @@
 
     <div id="wrapper">
     <!-- ------------------- Nav Partial ------------------------->
-    <% include ../partials/nav-loggedin-npo %>
+    <% include ../partials/nav-loggedin-vol %>
 
         <div id="page-wrapper" ng-controller="participantEditController" data-ng-init="init()">
             <div class="row">
@@ -82,21 +82,6 @@
                                   <div class="form-group">
                                     <label>Email ID</label>
                                     <input class="form-control" placeholder="Enter text" ng-model="email" value="{{email}}">
-                                  </div>
-
-                                  <div class="row cus-row-margin">
-                                    <div class="col-lg-6">
-                                      <div class="form-group">
-                                        <label>Password</label>
-                                        <input class="form-control" placeholder="Enter text" type="password"  type="password" ng-model="password" value="{{password}}">
-                                      </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                      <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input class="form-control" placeholder="Enter text" type="password">
-                                      </div>
-                                    </div>
                                   </div>
 
                                   <div class="form-group">
