@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="projectAngular">
 
 <head>
 
@@ -23,10 +23,11 @@
 
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src="angularjs/projectAngular.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -159,24 +160,25 @@
                             Projects
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" ng-controller="ProjectController">
 
                           <!-- List of the Projects -->
                           <div class="row">
                             <div class="col-md-12">
-                              <div class="media">
+                              <div class="media" ng-repeat="project in projects">
                                 <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
-                                <div class="media-body">
+                                <div class="media-body" >
                                   <h4 class="media-heading">
-                                    <a class="cus-link" href="#">Project Name 1</a>
-                                  </h4> Description Description Description Description Description Description Description Description Description Description Description DescriptionDescription Description Description Description Description Description Description Description Description Description Description Description
+                                    <a class="cus-link" href="#">{{project.PROJECT_TITLE}}</a>
+                                  </h4> {{project.PROJECT_DESC}}
                                   <div class="media">
                                     <div class="media-body">
                                       <h5 class="media-heading">
                                         <div>
                                             <div class="row">
-                                              <div class="col-md-12">
-                                                <span class="label label-default">Angular JS</span>
+                                              <div class="col-md-12" >
+
+                                                 <span class="label label-default">Angular JS</span>
                                                 <span class="label label-default">Node JS</span>
                                                 <span class="label label-default">Web Development</span>
                                               </div>
@@ -193,67 +195,7 @@
                             </div>
                           </div>
 
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h4 class="media-heading">
-                                    <a  class="cus-link" href="#">Project Name 2</a>
-                                  </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
-                                  <div class="media">
-                                    <div class="media-body">
-                                      <h5 class="media-heading">
-                                        <div>
-                                            <div class="row">
-                                              <div class="col-md-12">
-                                                <span class="label label-default">Angular JS</span>
-                                                <span class="label label-default">Node JS</span>
-                                                <span class="label label-default">Web Development</span>
-                                              </div>
-                                            </div>
-                                        </div>
-                                      </h5>
-                                      <div> </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row cus-row-margin"><hr></div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="media">
-                                <a href="#" class="pull-left"><img alt="Bootstrap Media Preview" src="http://lorempixel.com/64/64/" class="media-object" /></a>
-                                <div class="media-body">
-                                  <h4 class="media-heading">
-                                    <a href="#">Project Name 3</a>
-                                  </h4> Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description
-                                  <div class="media">
-                                    <div class="media-body">
-                                      <h5 class="media-heading">
-                                        <div>
-                                            <div class="row">
-                                              <div class="col-md-12">
-                                                <span class="label label-default">Angular JS</span>
-                                                <span class="label label-default">Node JS</span>
-                                                <span class="label label-default">Web Development</span>
-                                              </div>
-                                            </div>
-                                        </div>
-                                      </h5>
-                                      <div> </div>
-                                      <div class="row cus-row-margin"></div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row cus-row-margin"><hr></div>
-                              </div>
-                            </div>
-                          </div>
-
+                        
                           <!-- ./List of the Projects End -->
 
                         </div>
