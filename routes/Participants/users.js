@@ -2,7 +2,7 @@
 var ejs = require('ejs');
 //const crypto = require('crypto');
 
-var mongo = require("./mongo");
+var mongo = require("../mongo");
 var mongoURL = "mongodb://localhost:27017/DEVPOST";
 //var passport = require('passport');
 //require('./passport')(passport);

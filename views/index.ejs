@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="indexAngular">
 
 <head>
 
@@ -20,7 +20,9 @@
     <!-- Custom CSS -->
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="dist/css/style.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="angularjs/indexAngular.js"></script>
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
 
@@ -591,7 +593,7 @@
     <!-- Modals -->
     <!-- Login Modal -->
     <div aria-hidden="true" aria-labelledby="myModalLabel" class=
-    "modal fade" id="modal-container-990751" role="dialog">
+    "modal fade" id="modal-container-990751" role="dialog" ng-controller="IndexAngular">
     <div class="modal-dialog">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -603,10 +605,10 @@
                                 <form role="form">
                                     <fieldset>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                            <input class="form-control" placeholder="E-mail" name="email" ng-model=" email" type="email" autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                            <input class="form-control" placeholder="Password" name="password" type="password" ng-model="password" value="">
                                         </div>
                                         <div class="checkbox">
                                             <label>
@@ -614,10 +616,10 @@
                                             </label>
                                         </div>
                                         <!-- Change this to a button or input when using this as a form -->
-                                        <a href="index.html" class="btn btn-lg btn-success btn-block">Log In</a>
+                                        <a href="/doLogin" class="btn btn-lg btn-success btn-block">Log In</a>
                                         <hr>
                                         <span>Don't have account?</span>
-                                        <a href="index.html" class="btn btn-outline btn-success btn-block">Sign Up</a>
+                                        <a href="index.html" class="btn btn-outline btn-success btn-block" >Sign Up</a>
                                     </fieldset>
                                 </form>
                             </div>
