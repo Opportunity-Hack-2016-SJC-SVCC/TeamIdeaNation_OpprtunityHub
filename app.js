@@ -84,6 +84,9 @@ app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED_
 app.get('/nextStep',NPOProfile.nextStep);
 
 app.get('/nextStepParticipant',participant.nextStepParticipant);
+
+app.post('/projects/applyForSkill',projects.applyForJob);
+
 app.get('/projects/:projectId',projects.getDisplayPage);
 
 app.get('/logout',function(req,res){

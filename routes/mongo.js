@@ -195,6 +195,27 @@ exports.updateProjectSkill = function(collectionName,idString,queryJSON,updateJS
 
 }
 
+exports.applyForJob = function(collectionName,projectId,skill,pushJSON,callbackFunction)
+{
+
+  var o_id = new require('mongodb').ObjectID(projectId);
+  console.log(skill);
+  var newPushJSON = {$push : pushJSON};
+  var queryJSON = {"_id":o_id,"SKILL_SET.SKILL":skill.SKILL};
+
+  console.log(queryJSON);
+  console.log("test");
+  console.log(newPushJSON);
+    connect(mongoURL,function(db){
+      //  console.log('Connected to mongo at: ' + mongoURL);
+        var collectionObject = collection(collectionName);
+      //  console.log(queryJSON);
+        collectionObject.update(queryJSON,pushJSON,callbackFunction);
+    });
+
+}
+
+
 
 exports.connect = connect;
 exports.collection = collection;

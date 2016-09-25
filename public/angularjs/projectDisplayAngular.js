@@ -26,16 +26,20 @@ projectDisplayAngular.controller("projectDisplayAngular",['$scope','$http','proj
         });
 
 
+        $scope.apply=function(skill){
+        
+            $http({
+
+            method:"POST",
+            url:'applyForSkill',
+            data : {
+                "skill" : skill
+            }
 
 
-
-
-
-
-
-        $scope.getProjectDetails=function(){
-
-
+        }).then(function(res){
+            
+        });
     }
        $scope.projectId = projectId;
        $http({
