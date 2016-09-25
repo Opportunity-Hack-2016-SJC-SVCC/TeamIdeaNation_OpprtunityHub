@@ -45,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
 	res.render('./projectPages/createproject', {title:"Talent Bridge"});
 	res.render('./projectPages/projectlist', {title:"Talent Bridge"});
+	res.render('index', {title:"Talent Bridge"});
 });
 app.post('/', function(req, res){
 	res.render('index', {});
@@ -75,7 +76,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
-
+app.get('/nextStep',NPOProfile.nextStep);
 
 
 function isAuthenticated(req, res, next) {
