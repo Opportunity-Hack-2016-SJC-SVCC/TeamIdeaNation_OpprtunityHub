@@ -43,16 +43,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //All GET methods...........................//
 app.get('/', function(req, res){
-
-	//res.render('./projectPages/createproject', {title:"Talent Bridge"});
-	//res.render('./projectPages/projectlist', {title:"Talent Bridge"});
-
-	res.render('index', {});
-});
-app.get('/index', function(req, res){
-	res.render('index0', {});
-});
-app.post('/', function(req, res){
 	res.render('index', {});
 });
 
