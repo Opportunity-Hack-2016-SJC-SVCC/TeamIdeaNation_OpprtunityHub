@@ -18,3 +18,8 @@
   text-align: center;
   margin-top: 15%;
 }
+
+.cus-alert{
+  height: 35px;
+  padding-top: 8px !important;
+}

@@ -57,14 +57,13 @@ app.post('/', function(req, res){
 });
 
 // API DETAILS //
-app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
+app.post('/NPOeditprofile',NPOProfile.NPOProfileEdit);
 app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
-//app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
-app.get('/projects/display',projects.addProject);
+//app.get('/projects/display',projects.addProject);
 app.get('/projects/getProjectAddPage',projects.getCreateProject);
+app.post('/projects/getProjectDetails',projects.getProjectDetails);
 app.get('/projects/display/:projectId',projects.addProject);
-
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
 
@@ -75,7 +74,7 @@ app.get('/participant/display',participant.displayProfile);
 
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
-app.get('/NPO/getHomepage',NPOProfile.getHomepage);
+app.get('/NPOgetHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
 	res.render('ProjectPages/project', {});
@@ -88,7 +87,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
-
+app.get('/projects/:projectId',projects.getDisplayPage);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

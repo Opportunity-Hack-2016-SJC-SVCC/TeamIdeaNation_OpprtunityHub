@@ -7,9 +7,19 @@ app.controller('ProjectController',function($scope,$http){
 	$scope.addProject = function(position){
 		console.log($scope.project_name);
 		var insertPos = [];
-		insertPos.push({"skill1" : $scope.pos1});
-		insertPos.push({"skill2" : $scope.pos2});
-		insertPos.push({"skill3" : $scope.pos3});
+		console.log("--->"+$scope.pos3);
+		if($scope.pos1!=null){
+
+			insertPos.push({"skill" : $scope.pos1});
+		}
+		if($scope.pos2!=null){
+
+			insertPos.push({"skill" : $scope.pos2});
+		}
+		if($scope.pos3!=null){
+			console.log("skill 3 not defined")
+			insertPos.push({"skill" : $scope.pos3});
+		}
 		var c = 4;
 		var length = $scope.positions.length;
 		for(var i = 0;i<length;i++){
@@ -18,7 +28,7 @@ app.controller('ProjectController',function($scope,$http){
 			//var des = "des"+l;
 			insertPos.push({pos : position[i].pos});
 		}
-		console.log("Length--"+insertPos.length);
+		console.log("Length--"+insertPos);
 
 		$http({
 
