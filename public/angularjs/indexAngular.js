@@ -27,7 +27,7 @@ app.controller('LoginController',function($scope,$http){
         		}
         		else if(res.data.results.USERTYPE == 2){
         			console.log("Participant");
-							window.location.assign("/participant/getHomepage");
+							window.location.assign("/volunteerHome");
         		}
         	}
         }, function(res) { //this will be called on error
