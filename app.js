@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var mongoStore = require("connect-mongo")(expressSession);
 var mongoSessionConnectURL = "mongodb://localhost:27017/amazon_fresh";   //Change this if needed ................................//
 var passport = require('passport');
+var users=require('./routes/users');
 //require('./routes/passport')(passport);
 // var cron = require('cron');
 // var discountCronJob = cron.job("*/10 * * * * *",cronRoute.processDiscount);
@@ -48,14 +49,13 @@ app.post('/', function(req, res){
 	res.render('index', {});
 });
 
-
 // API DETAILS //
 app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
 app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
 app.post('/projects/display',projects.addProject);
 app.post('/projects/display/:projectId',projects.addProject);
-
+app.post('/doUserSignup',users.doSignUp);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
