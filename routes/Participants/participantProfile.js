@@ -117,3 +117,9 @@
   {
     res.render('./participantPages/participantProfile',{});
   }
+
+
+exports.getHomepage = function(req,res)
+{
+  res.render('./participantPages/Participanthome.ejs',{name:req.session.name});
+}

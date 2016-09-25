@@ -38,24 +38,27 @@ exports.addProject = function(req,res)
     mongo.insertOne("PROJECT", queryJSON, callbackFunction);
 }
 
-exports.displayAllProjects = function(req,res)
+exports.displayAllProjectsNPO = function(req,res)
 {
-  var npoId =12;
+  var npoId = req.session.userId;
 
   var queryJSON =
   {
-    "NPO_ID" : npoId
+    "NPO_ID" : npoId//new require('mongodb').ObjectID(req.session.userId)
   }
 
   var callbackFunction = function (err, result) {
 
         if (err) {
             console.log(err);
+              var jsonResponse={"statusCode":401};
+              res.send(jsonResponse);
         }
         else {
       console.log(result);
 
-            var jsonResponse={"projects":result};
+            var jsonResponse={"projects":result,"statusCode":200};
+            res.send(jsonResponse);
             //res.customerDetails=result;
             //callback(null, jsonResponse);
 

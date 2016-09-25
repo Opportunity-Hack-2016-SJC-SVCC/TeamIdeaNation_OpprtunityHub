@@ -1,6 +1,6 @@
-var app=angular.module('NPOHomeAngular',[]);
+var app=angular.module('participantHomeAngular',[]);
 
-app.controller('NPOHomeAngular',function($scope,$http){
+app.controller('participantHomeAngular',function($scope,$http){
 
 	console.log("try this");
 
@@ -13,17 +13,9 @@ app.controller('NPOHomeAngular',function($scope,$http){
 
 			}
 		}).then(function(res){
-			console.log(res);
-			if(res.data.statusCode == 200)
-			{
-				$scope.name = res.data.projects[0].NAME;
-				$scope.arrayObject = res.data.projects;
-			}
-			else if(res.data.statusCode == 401){
 
-			}
 		},function(res){
-				console.log(res);
+
 		})
 	}
 

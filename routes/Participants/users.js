@@ -175,5 +175,7 @@ function doLogin(req,res){
    mongo.findOne("USERS",queryJSON,callbackFunction);
 }
 
+
+
 exports.doLogin = doLogin;
 exports.doSignUp = doSignUp;
