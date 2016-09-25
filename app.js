@@ -17,7 +17,7 @@ var users=require('./routes/Participants/users');
 
 // Routers call
 var NPOProfile = require('./routes/NPO/NPOProfile');
-var projects = require('./routes/Project/projects');
+var projects = require('./routes/Projects/projects');
 
 app.use(expressSession({
 	secret: 'fjklowjafnkvnap',
@@ -55,7 +55,7 @@ app.post('/projects/add/:id',projects.addProject);
 app.post('/projects/display',projects.addProject);
 app.post('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
-app.post('/doAddProject',project.doAddProject);
+app.post('/doAddProject',projects.doAddProject);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
