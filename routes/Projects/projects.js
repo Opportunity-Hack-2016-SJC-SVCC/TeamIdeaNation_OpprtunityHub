@@ -230,11 +230,11 @@ exports.applyForJob = function(req,res)
   var skill = req.body["skill"];
   var projectId = req.body["projectId"];
   console.log(skill);
-  var pushJSON = {
+  var pushJSON ={ "SKILL_SET.$.APPLICATIONS " : {
     "USER_ID":req.session.userId,
     "NAME":req.session.name,
     "STATUS":0
-  };
+  }};
 
   
   var callbackFunction = function(err,result){

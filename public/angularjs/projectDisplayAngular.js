@@ -19,7 +19,7 @@ projectDisplayAngular.controller("projectDisplayAngular",['$scope','$http','proj
                 $scope.projectTitle = res.data.results.PROJECT_TITLE;
                 $scope.projectDesc = res.data.results.PROJECT_DESC;
                 $scope.category = res.data.results.CATEGORY;
-                $scope.skillSet = res.data.results.SKILL_SET;
+                $scope.skillSet = res.data.results.SKILL_SET; 
                 //console.log($scope.skillSet);
                 console.log("here1");
 
