@@ -43,16 +43,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //All GET methods...........................//
 app.get('/', function(req, res){
-
 	res.render('./projectPages/createproject', {title:"Talent Bridge"});
+	res.render('index', {title:"Talent Bridge"});
 });
-//app.post('/', function(req, res){
-//	res.render('index', {});
-//});
+app.post('/', function(req, res){
+	res.render('index', {});
+});
 
 // API DETAILS //
-app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
-app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
+app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
+app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
+//app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
 app.get('/projects/display',projects.addProject);
 app.get('/projects/display/:projectId',projects.addProject);
@@ -67,6 +68,10 @@ app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED_
 
 	res.render('ProjectPages/project', {title:"Talent Bridge"});
 });
+app.get('/nextStep',NPOProfile.nextStep);
+app.get('/nextStep',NPOProfile.nextStep);
+
+app.get('/nextStep',NPOProfile.nextStep);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

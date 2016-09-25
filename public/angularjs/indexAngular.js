@@ -57,21 +57,23 @@ app.controller('SignUpController',function($scope,$http){
             method:"POST",
             url:'/doUserSignup',
             data : {
-            	"name":$scope.name,
+            		"name":$scope.name,
                 "email":$scope.email,
                 "password":$scope.password,
-                "usertype":$scope.category
+                "usertype":$scope.user.type
             }
 
 
         }).then(function(res){
-        	console.log(JSON.stringify(res));
+        	alert(JSON.stringify(res));
         	if(res.data.statusCode == 200){
 
-        		if(res.data.results.USERTYPE == 1){
+        		if(res.data.USERTYPE == 1){
         			console.log("NPO");
+							var path = "/NPO/edit/"+res.data.userId;
+							window.location.assign("/nextStep");
         		}
-        		else if(res.data.results.USERTYPE == 1){
+        		else if(res.data.USERTYPE == 1){
         			console.log("Participant")
         		}
         	}
