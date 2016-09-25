@@ -55,6 +55,7 @@ app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
 //app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
 app.get('/projects/display',projects.addProject);
+app.get('/projects/getProjectAddPage',projects.getCreateProject);
 app.get('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);

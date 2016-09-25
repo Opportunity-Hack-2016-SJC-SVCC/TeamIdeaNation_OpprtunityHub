@@ -185,3 +185,8 @@ exports.getProjectList = function(req,res){
   }
    mongo.find("PROJECT", queryJSON, callbackFunction);
 }
+
+exports.getCreateProject = function(req,res)
+{
+  res.render('./ProjectPages/createProject.ejs',{name:req.session.name});
+}
