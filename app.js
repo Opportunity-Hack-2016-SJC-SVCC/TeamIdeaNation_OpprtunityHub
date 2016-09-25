@@ -90,6 +90,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
+app.post('/projects/applyForSkill',projects.applyForJob);
 app.get('/projects/:projectId',projects.getDisplayPage);
 
 function isAuthenticated(req, res, next) {

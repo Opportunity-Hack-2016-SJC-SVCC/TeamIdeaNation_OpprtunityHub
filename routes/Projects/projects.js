@@ -45,6 +45,8 @@ exports.displayAllProjectsNPO = function(req,res)
   {
     "NPO_ID" : npoId//new require('mongodb').ObjectID(req.session.userId)
   }
+
+} 
 exports.getProjectDetails = function(req,res)
 {
 
@@ -203,4 +205,30 @@ exports.getProjectList = function(req,res){
 exports.getCreateProject = function(req,res)
 {
   res.render('./ProjectPages/createProject.ejs',{name:req.session.name});
+}
+
+exports.applyForJob = function(req,res)
+{
+  var skill = req.body["skill"];
+  var projectId = req.body["projectId"];
+  console.log(skill);
+  var pushJSON = {
+    "USER_ID":req.session.userId,
+    "NAME":req.session.name,
+    "STATUS":0
+  };
+
+  
+  var callbackFunction = function(err,result){
+      if(err){
+        console.log(err);
+      }
+      else{
+        if(result!=null){
+          var resJson = {"statuscode" : 200};
+          res.send(resJson);
+        }
+      }
+  }
+  mongo.applyForJob("PROJECT",projectId,skill,pushJSON,callbackFunction);
 }

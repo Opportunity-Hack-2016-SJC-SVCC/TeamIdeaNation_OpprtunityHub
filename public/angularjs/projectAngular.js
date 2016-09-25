@@ -10,15 +10,15 @@ app.controller('ProjectController',function($scope,$http){
 		console.log("--->"+$scope.pos3);
 		if($scope.pos1!=null){
 
-			insertPos.push({"skill" : $scope.pos1});
+			insertPos.push({"SKILL" : $scope.pos1,"APPLICATIONS":[]});
 		}
 		if($scope.pos2!=null){
 
-			insertPos.push({"skill" : $scope.pos2});
+			insertPos.push({"SKILL" : $scope.pos2,"APPLICATIONS":[]});
 		}
 		if($scope.pos3!=null){
 			console.log("skill 3 not defined")
-			insertPos.push({"skill" : $scope.pos3});
+			insertPos.push({"SKILL" : $scope.pos3,"APPLICATIONS":[]});
 		}
 		var c = 4;
 		var length = $scope.positions.length;
@@ -26,7 +26,7 @@ app.controller('ProjectController',function($scope,$http){
 			var l = c + i
 			var pos = "skill"+l;
 			//var des = "des"+l;
-			insertPos.push({pos : position[i].pos});
+			insertPos.push({"SKILL" : position[i].pos,"APPLICATIONS":[]});
 		}
 		console.log("Length--"+insertPos);
 

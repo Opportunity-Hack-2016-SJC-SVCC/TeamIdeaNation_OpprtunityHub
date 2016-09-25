@@ -34,9 +34,20 @@ projectDisplayAngular.controller("projectDisplayAngular",['$scope','$http','proj
         
 
 
-        $scope.getProjectDetails=function(){
+        $scope.apply=function(skill){
         
+            $http({
 
+            method:"POST",
+            url:'applyForSkill',
+            data : {
+                "skill" : skill
+            }
+
+
+        }).then(function(res){
+            
+        });
     }
 
 }]);
