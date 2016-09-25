@@ -18,6 +18,8 @@ var users=require('./routes/Participants/users');
 // Routers call
 var NPOProfile = require('./routes/NPO/NPOProfile');
 var projects = require('./routes/Projects/projects');
+var participant = require('./routes/Participants/participantProfile');
+var participantActivity = require('./routes/Participants/projectActivity');
 
 app.use(expressSession({
 	secret: 'fjklowjafnkvnap',
@@ -52,14 +54,14 @@ app.post('/', function(req, res){
 app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
 app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
-app.post('/projects/display',projects.addProject);
-app.post('/projects/display/:projectId',projects.addProject);
+app.get('/projects/display',projects.addProject);
+app.get('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',projects.doAddProject);
-app.get('/NPOProfile',function(req, res){
-  res.render('NPOpages/NPOprofile',{});
-});
-app.post('/doAddProject',projects.doAddProject);
+app.post('/participant/edit:id',participant.editProfile);
+app.get('/participant/display/:id',participant.displayProfile);
+app.post('/participant/subscribe/:id',participantActivity.applyProject);
+app.post('/doLogin',users.doLogin);
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);
