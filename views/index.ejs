@@ -131,8 +131,17 @@
                                   <label>Confirm Password</label>
                                   <input class="form-control" placeholder="Enter text" type="password" ng-model="confirmpwd">
                               </div>
-                              <button type="submit" class="btn btn-primary pull-right" ng-click="doSignUp()">Submit</button>
-                              <div id="hideError" ng-hide = "hideError">Passwords doesn't match.</div>
+
+                              <div class="row cus-row-margin">
+                                <div class="col-md-10">
+                                  <div class="alert alert-danger cus-alert" id="hideError" ng-hide="hideError">
+                                    Passwords doesn't match.
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary pull-right" ng-click="doSignUp()">Submit</button>
+                                </div>
+                              </div>
                           </form>
                   </div>
                   <!-- /.row (nested) -->

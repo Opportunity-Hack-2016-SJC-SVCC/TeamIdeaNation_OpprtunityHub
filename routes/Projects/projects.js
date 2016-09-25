@@ -140,13 +140,13 @@ exports.editProject = function(req,res)
 function doAddProject(req, res) {
 
 
-  var npoId = req.session.user_id;
+  var npoId = req.session.userId;
   var org_name = req.session.name;
   var project_name=req.param("PROJECT_TITLE");
   var project_desc=req.param("PROJECT_DESC");
   var positions = req.param("POSITIONS");
   console.log(positions);
-  
+
 var queryJSON =
 {
   "NPO_ID" : npoId,
@@ -167,7 +167,7 @@ var queryJSON =
          var jsonRes = {"statuscode" : 200};
          res.send(jsonRes);
         }
-         
+
     }
     mongo.insertOne("PROJECT", queryJSON, callbackFunction);
 }

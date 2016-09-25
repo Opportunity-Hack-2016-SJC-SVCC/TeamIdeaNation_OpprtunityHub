@@ -94,19 +94,19 @@ function doSignUp(req, res) {
         }
         else{
           var queryJSONFind = {"EMAIL": email};
-          var callbackFunction2 = function (err, result2) {
+          var callbackFunction5 = function (err, result5) {
             if (err) {
               console.log(err);
             }
             else {
-              console.log(result2);
-              if(result2!=null){
+              console.log(result5);
+              if(result5!=null){
                   console.log("Data fetched successfully from USERS");
-                  console.log(result2);
-                  var callbackFunction3 = function(err,result3){
-                  console.log(result2);
+                  console.log(result5);
+                  var callbackFunction4 = function(err4,result4){
+                  console.log(result4);
                   if(err){
-                      console.log(err);
+                      console.log(err4);
                       json_responses.statusCode = 401;
                       res.send(json_responses);
                   }
@@ -115,19 +115,32 @@ function doSignUp(req, res) {
                     console.log("User_id added successfully in PARTICIPANTS");
                     json_responses.statusCode = 200;
                     json_responses.USERTYPE = userTypeCode;
+                    json_responses.userId = result4.ops[0].USER_ID;
+                    req.session.userId = result4.ops[0].USER_ID;
+                    req.session.name = result4.ops[0].NAME;
                     res.send(json_responses);
                   }
 
               }
 
-              var user_id = new require('mongodb').ObjectID(result2._id);
+              var user_id = new require('mongodb').ObjectID(result5._id);
               //console.log("USER_ID-->"+user_id);
-              var npo_id_query = {"USER_ID" : user_id};
-              mongo.insertOne("NPO_DETAILS", npo_id_query, callbackFunction3);
+              var participant_id_query =
+              {
+                "USER_ID" : result5._id,
+                "NAME":name,
+                "EMAIL":email,
+                "PASSWORD":password,
+                "DESCRIPTION":"",
+                "ADDRESS":"",
+                "WEBSITE":"",
+                "SKILL_SET":""
+              };
+              mongo.insertOne("PARTICIPANTS", participant_id_query, callbackFunction4);
             }
           }
         }
-        mongo.findOne("USERS", queryJSONFind, callbackFunction2);
+        mongo.findOne("USERS", queryJSONFind, callbackFunction5);
         }
     }
   }
@@ -151,6 +164,7 @@ function doLogin(req,res){
         if(result!=null){
             req.session.email = email;
             console.log(result);
+            req.session.userId = result._id;
             json_responses = {"statusCode" : 200,"results":result};
             res.send(json_responses);
         }else{
