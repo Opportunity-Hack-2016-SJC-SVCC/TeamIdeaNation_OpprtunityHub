@@ -53,7 +53,7 @@ app.post('/', function(req, res){
 });
 
 // API DETAILS //
-app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
+app.post('/NPOeditprofile',NPOProfile.NPOProfileEdit);
 //app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 //app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
@@ -67,7 +67,7 @@ app.get('/participant/display/:id',participant.displayProfile);
 app.post('/participant/subscribe/:id',participantActivity.applyProject);
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
-app.get('/NPO/getHomepage',NPOProfile.getHomepage);
+app.get('/NPOgetHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
 	res.render('ProjectPages/project', {});
