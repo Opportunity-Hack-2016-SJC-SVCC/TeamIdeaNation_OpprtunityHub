@@ -46,6 +46,8 @@ exports.displayAllProjectsNPO = function(req,res)
   {
     "NPO_ID" : npoId//new require('mongodb').ObjectID(req.session.userId)
   }
+}
+
 exports.getProjectDetails = function(req,res)
 {
 
