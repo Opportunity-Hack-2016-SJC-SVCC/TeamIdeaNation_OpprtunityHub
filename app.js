@@ -72,6 +72,7 @@ app.get('/nextStep',NPOProfile.nextStep);
 app.get('/nextStep',NPOProfile.nextStep);
 
 app.get('/nextStep',NPOProfile.nextStep);
+app.get('/nextStep',NPOProfile.nextStep);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
