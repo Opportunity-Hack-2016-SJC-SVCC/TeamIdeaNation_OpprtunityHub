@@ -1,4 +1,3 @@
-
 var express = require('express')
   ,  app = express()
 	, http = require('http').Server(app)
@@ -10,10 +9,15 @@ var bodyParser = require('body-parser');
 var mongoStore = require("connect-mongo")(expressSession);
 var mongoSessionConnectURL = "mongodb://localhost:27017/amazon_fresh";   //Change this if needed ................................//
 var passport = require('passport');
+var users=require('./routes/Participants/users');
 //require('./routes/passport')(passport);
 // var cron = require('cron');
 // var discountCronJob = cron.job("*/10 * * * * *",cronRoute.processDiscount);
 // discountCronJob.start();
+
+// Routers call
+var NPOProfile = require('./routes/NPO/NPOProfile');
+var projects = require('./routes/Project/projects');
 
 app.use(expressSession({
 	secret: 'fjklowjafnkvnap',
@@ -25,6 +29,7 @@ app.use(expressSession({
 		url: mongoSessionConnectURL
 	})
 }));
+
 app.use(passport.initialize());
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,6 +47,15 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
 	res.render('index', {});
 });
+
+// API DETAILS //
+app.post('/NPO/edit/:id',NPOProfile.NPOProfileEdit);
+app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
+app.post('/projects/add/:id',projects.addProject);
+app.post('/projects/display',projects.addProject);
+app.post('/projects/display/:projectId',projects.addProject);
+app.post('/doUserSignup',users.doSignUp);
+app.post('/doAddProject',project.doAddProject);
 
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {

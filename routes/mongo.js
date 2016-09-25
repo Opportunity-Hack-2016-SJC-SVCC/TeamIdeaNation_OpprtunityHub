@@ -1,7 +1,7 @@
 //Twitter Project with Mongo
 
 var MongoClient = require('mongodb').MongoClient;
-var mongoURL = "mongodb://localhost:27017/amazon_fresh";
+var mongoURL = "mongodb://localhost:27017/DEVPOST";
 var db;
 var connected = false;
 
@@ -34,7 +34,7 @@ exports.insertMany = function(collectionName,insertJSONArray,callbackFunction){
     connect(mongoURL, function(db){
         var collectionObject = collection(collectionName);
         collectionObject.insertMany(insertJSONArray,callbackFunction);//native object call for NPM
-//		db.close();
+//    db.close();
     });
 }
 
@@ -44,7 +44,7 @@ exports.insertOne = function(collectionName,insertJSON,callbackFunction){
       //  console.log('Connected to mongo at: ' + mongoURL);
         var collectionObject = collection(collectionName);
         collectionObject.insertOne(insertJSON,callbackFunction);//native object call for NPM
-//		db.close();
+//    db.close();
     });
 }
 
@@ -96,7 +96,7 @@ exports.searchIt = function(collectionName, searchString, searchType, callback){
 
   connect(mongoURL, function(db){
       var collectionObject = collection(collectionName);
-    	collectionObject.find(queryJSON).toArray(callback);
+      collectionObject.find(queryJSON).toArray(callback);
   });
 }
 
@@ -119,7 +119,7 @@ exports.searchItAdmin = function(collectionName, searchString, searchType, callb
 
   connect(mongoURL, function(db){
       var collectionObject = collection(collectionName);
-    	collectionObject.find(queryJSON).toArray(callback);
+      collectionObject.find(queryJSON).toArray(callback);
   });
 }
 
@@ -176,17 +176,6 @@ exports.updateOne = function(collectionName,queryJSON,updateJSON,callbackFunctio
         var collectionObject = collection(collectionName);
       //  console.log(queryJSON);
         collectionObject.updateOne(queryJSON,updateJSON,callbackFunction);
-    });
-
-}
-
-exports.aggregateZip = function(collectionName, callbackFunction)
-{
-    connect(mongoURL, function(db){
-      //  console.log('Connected to mongo at: ' + mongoURL);
-        var collectionObject = collection(collectionName);
-      //  console.log(queryJSON);
-        collectionObject.aggregate([{ $group: { _id : "$ZIP", total: { $sum: 1 }}}], callbackFunction);
     });
 
 }
