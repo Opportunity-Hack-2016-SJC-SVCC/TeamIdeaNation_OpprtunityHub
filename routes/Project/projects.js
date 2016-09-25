@@ -4,7 +4,7 @@ var mongoURL = "mongodb://localhost:27017/DEVPOST";
 
 exports.addProject = function(req,res)
 {
-  var npoId = 12;
+  var npoId = req.session.user_id;
   var projctTitle = req.param["PROJECT_TITLE"];
   var projectDesc = req.body["PROJECT_DESC"];
   var skillSet = req.body["SKILL_SET"];
