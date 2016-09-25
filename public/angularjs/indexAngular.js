@@ -25,8 +25,9 @@ app.controller('LoginController',function($scope,$http){
         			console.log("NPO");
                     window.location.assign("/NPO/getHomepage");
         		}
-        		else if(res.data.results.USERTYPE == 1){
-        			console.log("Participant")
+        		else if(res.data.results.USERTYPE == 2){
+        			console.log("Participant");
+							window.location.assign("/participant/getHomepage");
         		}
         	}
         }, function(res) { //this will be called on error

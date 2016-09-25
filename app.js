@@ -60,6 +60,7 @@ app.post('/', function(req, res){
 app.post('/NPOeditprofile',NPOProfile.NPOProfileEdit);
 app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
+app.get('/projects/displayAll',projects.displayAllProjectsNPO);
 //app.get('/projects/display',projects.addProject);
 app.get('/projects/getProjectAddPage',projects.getCreateProject);
 app.post('/projects/getProjectDetails',projects.getProjectDetails);
@@ -74,6 +75,8 @@ app.get('/participant/display',participant.displayProfile);
 
 app.post('/doLogin',users.doLogin);
 app.post('/getProjectList',projects.getProjectList);
+app.get('/NPO/getHomepage',NPOProfile.getHomepage);
+app.get('/participant/getHomepage',participant.getHomepage);
 app.get('/NPOgetHomepage',NPOProfile.getHomepage);
 app.post('/getProjectList',projects.getProjectList);
 app.get('/viewprojects', function(req, res){       //_____________TO BE REMOVED______________________//
