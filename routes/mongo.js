@@ -180,6 +180,21 @@ exports.updateOne = function(collectionName,queryJSON,updateJSON,callbackFunctio
 
 }
 
+exports.updateProjectSkill = function(collectionName,idString,queryJSON,updateJSON,callbackFunction)
+{
+
+    var o_id = new require('mongodb').ObjectID(idString);
+    var newQueryJSON = {_id : o_id, "SKILL_SET":{queryJSON}};
+
+    connect(mongoURL,function(db){
+      //  console.log('Connected to mongo at: ' + mongoURL);
+        var collectionObject = collection(collectionName);
+      //  console.log(queryJSON);
+        collectionObject.updateOne(newQueryJSON,updateJSON,callbackFunction);
+    })
+
+}
+
 
 exports.connect = connect;
 exports.collection = collection;

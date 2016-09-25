@@ -1,54 +1,36 @@
+var mongo = require("../mongo");
+
+
 exports.applyProject = function(req,res)
 {
   var projctId = req.body['projctId'];
-  var participantUserId = 122; // Session varibale Here
   var estimation = req.body['estimation'];
-  var breakdown = req.body['breakdown'];
+  var skill = req.body['skill'];
   var accepted = 0;
 
-  var queryJSON = {
-    "_id" : ObjectID(projctId)
-  }
+  var updateJSON = {
+          $push : {
+            "USER_ID":userId,
+            "NAME" : req.session.name,
+            "IMAGE" : req.session.image,
+            "ESTIMATE" :  estimation,
+            "STATUS" : 0
+            }
+          };
 
-  var callbackFunction1 = function(err,result1)
-  {
-    if(err)
-    {
-      console.log(err);
-    }
-    else {
-      console.log(result1);
-      var npoId = result1.NPO_ID;
-      var projctTitle = result1.PROJECT_TITLE;
-      var projectDesc = result1.PROJECT_DESC;
-      var skillSet = result1.SKILL_SET;
-      var deadline = result1.DEADLINE;
+    var callbackFunction = function (err, result) {
 
-      var queryJSON2 =
-      {
-        "PROJECT_ID" : projctId,
-        "NPO_ID" : npoId,
-        "PROJECT_TITLE":projctTitle,
-        "PROJECT_DESC":projectDesc,
-        "SKILL_SET":skillSet,
-        "DEADLINE":deadline,
-        "PARTICIPANT_USER_ID":participantUserId,
-        "ESTIMATION":estimation,
-        "BREAKDOWN":breakdown,
-        "ACCEPTED":accepted,
-        "DISCUSSION":{}
-      }
-      var callbackFunction2 = function(err2,result2)
-      {
-        if(err2)
-        {
-          console.log(err2);
+        if (err) {
+            console.log(err);
         }
         else {
-          // JSON Response from here such as 200 status
+      console.log(result);
+
+            var jsonResponse={"statusCode":200};
+            res.send(jsonResponse);
+            //callback(null, jsonResponse);
+
         }
-      }
-      mongo.insertOne("PROJECT_APPLICATION",queryJSON2,callbackFunction2);
     }
-  }
+  mongo.updateProjectSkill("PROJECT",projctId,skill,updateJSON,callbackFunction);
 }
