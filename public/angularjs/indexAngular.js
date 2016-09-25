@@ -23,6 +23,7 @@ app.controller('LoginController',function($scope,$http){
 
         		if(res.data.results.USERTYPE == 1){
         			console.log("NPO");
+                    window.location.assign("/NPO/getHomepage");
         		}
         		else if(res.data.results.USERTYPE == 1){
         			console.log("Participant")
