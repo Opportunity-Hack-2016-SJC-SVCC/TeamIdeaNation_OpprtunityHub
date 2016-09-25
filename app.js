@@ -56,7 +56,9 @@ app.post('/projects/display',projects.addProject);
 app.post('/projects/display/:projectId',projects.addProject);
 app.post('/doUserSignup',users.doSignUp);
 app.post('/doAddProject',project.doAddProject);
-
+app.get('/NPOhome',function(req, res){
+  res.render('NPOpages/NPOhome',{});
+});
 function isAuthenticated(req, res, next) {
   if(req.session.userId) {
     console.log(req.session.userId);
