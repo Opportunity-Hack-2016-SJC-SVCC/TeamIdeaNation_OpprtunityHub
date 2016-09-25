@@ -1,6 +1,7 @@
 var app=angular.module('projectAngular',[]);
 
 app.controller('ProjectController',function($scope,$http){
+
 	$scope.counter = 3;
 	 $scope.positions = []
 	$scope.addProject = function(position){
@@ -46,4 +47,25 @@ app.controller('ProjectController',function($scope,$http){
 			$scope.positions.push({ "count": $scope.counter , skill: '',des:''});
 	            
 	 };
+	 $scope.count = 0;
+	 $scope.projectList = function(){
+	 	
+	 	$http({
+
+            method:"POST",
+            url:'/getProjectList',
+            data : {
+               
+            }
+
+
+        }).then(function(res){
+        	console.log(res.data.result);
+        	$scope.projects = res.data.result;
+        	
+        }, function(res) { //this will be called on error
+          console.log(res.data);
+        });
+	 }
+	 $scope.projectList();
 });
