@@ -58,7 +58,7 @@ app.post('/', function(req, res){
 
 // API DETAILS //
 app.post('/NPO/edit',NPOProfile.NPOProfileEdit);
-//app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
+app.get('/NPO/display',NPOProfile.NPOProfileDisplay);
 //app.get('/NPO/display/:id',NPOProfile.NPOProfileDisplay);
 app.post('/projects/add/:id',projects.addProject);
 app.get('/projects/display',projects.addProject);
